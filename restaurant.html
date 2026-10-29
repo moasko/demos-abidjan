@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chez Richard’s — Maquette démo · Restaurant, Zone 3 Abidjan</title>
+<meta name="description" content="Maquette de démonstration du site de Chez Richard’s, restaurant à Zone 3, Abidjan. Menu, réservation, commande.">
+<style>
+  :root{
+    --ink:#171310;--ink2:#2a231d;--cream:#f6f0e5;--sand:#e9dfcd;
+    --terra:#c25a38;--terra2:#a8482a;--gold:#d6a54c;--muted:#7d7266;
+    --max:1180px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--cream);color:var(--ink);font-family:"Segoe UI","Helvetica Neue",Arial,sans-serif;line-height:1.6;overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  button,input,select{font:inherit}
+  .demo{background:#16110d;color:#d8cfc2;font-size:10.5px;letter-spacing:.08em;text-align:center;padding:8px 14px;text-transform:uppercase}
+  .demo b{color:var(--gold)}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  /* header */
+  header{position:fixed;top:32px;left:0;right:0;z-index:40;transition:background .4s,box-shadow .4s,top .4s}
+  header.solid{background:rgba(246,240,229,.94);backdrop-filter:blur(14px);box-shadow:0 1px 0 rgba(23,19,16,.1);top:0}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:78px;gap:24px}
+  .logo{font-family:Georgia,serif;font-size:22px;line-height:1.05;letter-spacing:-.01em;color:var(--cream)}
+  .logo span{display:block;font-family:"Segoe UI",sans-serif;font-size:8px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-top:3px}
+  header.solid .logo{color:var(--ink)}
+  nav.links{display:flex;gap:30px;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.82)}
+  header.solid nav.links{color:#4b4238}
+  nav.links a{position:relative;padding:4px 0}
+  nav.links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--terra);transition:width .3s}
+  nav.links a:hover::after{width:100%}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;padding:14px 22px;border-radius:99px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;transition:transform .25s,background .25s,color .25s,box-shadow .25s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:var(--terra);color:#fff;box-shadow:0 10px 24px rgba(194,90,56,.28)}
+  .btn-primary:hover{background:var(--terra2)}
+  .btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.45)}
+  .btn-ghost:hover{background:rgba(255,255,255,.12)}
+  .btn-dark{background:var(--ink);color:var(--cream)}
+  .burger{display:none;width:42px;height:42px;border:1px solid rgba(255,255,255,.35);border-radius:50%;background:none;color:#fff;align-items:center;justify-content:center;cursor:pointer}
+  header.solid .burger{color:var(--ink);border-color:rgba(23,19,16,.25)}
+  /* hero */
+  .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;padding:150px 0 64px;color:#fff;overflow:hidden;background:#1a1410}
+  .hero .bg{position:absolute;inset:0;background:url("assets/resto-hero.jpg") center 58%/cover no-repeat;transform:scale(1.03);animation:slowzoom 18s ease-out both}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,11,8,.82) 0%,rgba(15,11,8,.45) 55%,rgba(15,11,8,.18) 100%),linear-gradient(to top,rgba(15,11,8,.8),transparent 45%)}
+  .hero .wrap{position:relative;z-index:2;width:100%}
+  .hero .eyebrow{display:flex;align-items:center;gap:12px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+  .hero .eyebrow::before{content:"";width:36px;height:1px;background:var(--gold)}
+  h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(44px,7.4vw,92px);line-height:.97;letter-spacing:-.035em;margin:0 0 24px;max-width:900px}
+  h1 em{font-style:italic;color:#f0c684}
+  .hero p.sub{font-size:clamp(15px,1.6vw,18px);color:rgba(255,255,255,.82);max-width:560px;margin:0 0 30px;line-height:1.7}
+  .hero .actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .rating{display:flex;align-items:center;gap:12px;margin-top:30px;font-size:13px;color:rgba(255,255,255,.8)}
+  .stars{color:var(--gold);letter-spacing:2px;font-size:15px}
+  .rating b{color:#fff;font-weight:600}
+  .scroll{position:absolute;right:28px;bottom:26px;z-index:2;writing-mode:vertical-rl;font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.55);display:flex;align-items:center;gap:10px}
+  .scroll::after{content:"";width:1px;height:44px;background:rgba(255,255,255,.4);animation:pulse 2s infinite}
+  @keyframes slowzoom{from{transform:scale(1.1)}to{transform:scale(1.03)}}
+  @keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
+  /* sections */
+  section{padding:92px 0}
+  .kicker{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--terra);font-weight:700;margin-bottom:17px;display:flex;align-items:center;gap:10px}
+  .kicker::before{content:"";width:28px;height:1px;background:var(--terra)}
+  h2{font-family:Georgia,serif;font-weight:400;font-size:clamp(32px,4.4vw,52px);line-height:1.06;letter-spacing:-.025em;margin:0 0 20px}
+  h2 em{font-style:italic;color:var(--terra)}
+  .lead{font-size:16px;color:#5c5146;line-height:1.75;max-width:620px}
+  .story{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:center}
+  .story .photo{position:relative}
+  .story .photo img{border-radius:2px;aspect-ratio:4/5;object-fit:cover}
+  .story .photo::before{content:"";position:absolute;inset:-16px 18px 18px -16px;border:1px solid rgba(194,90,56,.35);z-index:-1}
+  .story .badge{position:absolute;right:-18px;bottom:26px;background:var(--cream);padding:18px 22px;border:1px solid var(--sand);box-shadow:0 18px 40px rgba(23,19,16,.13)}
+  .story .badge b{font-family:Georgia,serif;font-size:26px;display:block;line-height:1}
+  .story .badge span{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .story .text p{color:#5c5146;font-size:15px;line-height:1.8;margin:0 0 16px}
+  .signature{font-family:Georgia,serif;font-style:italic;font-size:19px;color:var(--ink);margin-top:22px}
+  /* menu */
+  .menu{background:#171310;color:var(--cream)}
+  .menu .kicker{color:var(--gold)}.menu .kicker::before{background:var(--gold)}
+  .menu h2 em{color:var(--gold)}
+  .menu .lead{color:rgba(246,240,229,.65)}
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;margin:38px 0 30px;border-bottom:1px solid rgba(246,240,229,.16);padding-bottom:0}
+  .tab{background:none;border:0;color:rgba(246,240,229,.55);padding:12px 18px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;position:relative;font-weight:600;transition:color .25s}
+  .tab::after{content:"";position:absolute;left:14px;right:14px;bottom:-1px;height:2px;background:var(--gold);transform:scaleX(0);transition:transform .3s}
+  .tab.active{color:var(--cream)}
+  .tab.active::after{transform:scaleX(1)}
+  .dishes{display:grid;grid-template-columns:1fr 1fr;gap:0 56px}
+  .dish{display:flex;justify-content:space-between;gap:20px;padding:18px 0;border-bottom:1px solid rgba(246,240,229,.12);animation:dishIn .45s ease both}
+  .dish h3{font-family:Georgia,serif;font-weight:400;font-size:18px;margin:0 0 4px;color:var(--cream)}
+  .dish p{font-size:12.5px;color:rgba(246,240,229,.5);margin:0;max-width:320px;line-height:1.55}
+  .dish b{font-size:14px;color:var(--gold);white-space:nowrap;font-weight:600;padding-top:3px}
+  @keyframes dishIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .menu .note{font-size:11px;color:rgba(246,240,229,.4);margin-top:26px}
+  /* signature */
+  .signature-section{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--cream)}
+  .signature-section .img{min-height:430px;background:url("assets/resto-poulet.jpg") center/cover}
+  .signature-section .box{padding:60px 70px;display:flex;flex-direction:column;justify-content:center}
+  .signature-section .box h3{font-family:Georgia,serif;font-size:30px;font-weight:400;margin:0 0 14px}
+  .signature-section .box p{font-size:14px;color:#5c5146;line-height:1.8}
+  .price{font-family:Georgia,serif;font-size:22px;color:var(--terra);margin-top:8px}
+  /* booking */
+  .booking{background:linear-gradient(135deg,#1c1712,#2a211a);color:var(--cream);position:relative;overflow:hidden}
+  .booking::before{content:"";position:absolute;right:-140px;top:-140px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(214,165,76,.16),transparent 65%)}
+  .booking .grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:center;position:relative}
+  .booking h2 em{color:var(--gold)}
+  .booking p{color:rgba(246,240,229,.62);font-size:14.5px}
+  form.reserve{background:rgba(246,240,229,.05);border:1px solid rgba(246,240,229,.14);padding:34px;border-radius:4px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .field{display:flex;flex-direction:column;gap:7px}
+  .field.full{grid-column:1/-1}
+  label{font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:rgba(246,240,229,.55)}
+  input,select{background:rgba(255,255,255,.06);border:1px solid rgba(246,240,229,.18);color:var(--cream);padding:13px 14px;border-radius:2px;outline:none;font-size:14px;transition:border .25s,background .25s}
+  input:focus,select:focus{border-color:var(--gold);background:rgba(255,255,255,.09)}
+  select option{background:#1c1712}
+  form.reserve .btn{grid-column:1/-1;justify-content:center;margin-top:8px}
+  .formnote{grid-column:1/-1;font-size:10px;color:rgba(246,240,229,.4);margin:0}
+  .success{grid-column:1/-1;display:none;background:rgba(214,165,76,.12);border:1px solid rgba(214,165,76,.4);padding:16px;font-size:13px;color:#f0d9ae;border-radius:2px;line-height:1.6}
+  .success.show{display:block;animation:dishIn .4s ease}
+  /* reviews */
+  .reviews{background:var(--sand)}
+  .review-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:38px}
+  .big-rating{display:flex;align-items:center;gap:16px;background:var(--cream);border:1px solid rgba(23,19,16,.08);padding:16px 22px}
+  .big-rating b{font-family:Georgia,serif;font-size:34px;line-height:1}
+  .big-rating small{display:block;font-size:10.5px;color:var(--muted);letter-spacing:.04em}
+  .review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .review{background:var(--cream);padding:26px;border:1px solid rgba(23,19,16,.07)}
+  .review .stars{font-size:13px;margin-bottom:12px}
+  .review p{font-family:Georgia,serif;font-size:16px;line-height:1.6;margin:0 0 18px;color:#3b332b}
+  .review span{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  /* visit */
+  .visit{display:grid;grid-template-columns:1fr 1fr;gap:0;padding:0}
+  .visit .info{padding:80px 70px;background:var(--cream)}
+  .visit .map{background:linear-gradient(135deg,#d9cdb9,#c3b49c);position:relative;min-height:420px}
+  .visit .map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:sepia(.18) saturate(.85)}
+  .info-row{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--sand);font-size:14px}
+  .info-row b{display:block;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:2px;font-weight:600}
+  .info-row a{color:var(--terra)}
+  /* footer */
+  footer{background:#100d0a;color:rgba(246,240,229,.55);padding:54px 0 34px;font-size:12px}
+  .foot{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:34px}
+  .foot .logo{color:var(--cream)}
+  .foot a:hover{color:var(--gold)}
+  .foot-links{display:flex;gap:26px;flex-wrap:wrap}
+  .legal{border-top:1px solid rgba(246,240,229,.12);padding-top:20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:10px;letter-spacing:.04em;color:rgba(246,240,229,.35)}
+  /* mobile bar */
+  .mobilebar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:45;background:rgba(23,19,16,.96);backdrop-filter:blur(10px);padding:10px 12px;gap:10px;border-top:1px solid rgba(255,255,255,.12)}
+  .mobilebar a{flex:1;text-align:center;padding:13px;border-radius:99px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+  .mobilebar .call{border:1px solid rgba(255,255,255,.28);color:#fff}
+  .mobilebar .book{background:var(--terra);color:#fff}
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+  @media(max-width:980px){
+    nav.links{display:none}
+    .burger{display:flex}
+    header{top:30px}
+    .story,.booking .grid,.signature-section,.visit{grid-template-columns:1fr}
+    .story{gap:44px}
+    .dishes{grid-template-columns:1fr}
+    .review-grid{grid-template-columns:1fr}
+    .signature-section .box{padding:44px 26px}
+    .visit .info{padding:56px 26px}
+    .mobilebar{display:flex}
+    footer{padding-bottom:96px}
+    .scroll{display:none}
+    section{padding:66px 0}
+    form.reserve{grid-template-columns:1fr;padding:24px}
+    .hero{padding-bottom:80px}
+  }
+  @media(max-width:560px){
+    .wrap{padding:0 18px}
+    .hero{min-height:92svh}
+    h1{font-size:42px}
+    .hero .actions .btn{flex:1}
+    .booking{padding:60px 0}
+  }
+</style>
+</head>
+<body>
+
+<div class="demo">Maquette de démonstration — site non officiel · <b>contenus d’exemple</b></div>
+
+<header id="header">
+  <div class="wrap nav">
+    <a class="logo" href="#top">Chez Richard’s<span>Restaurant · Abidjan</span></a>
+    <nav class="links">
+      <a href="#maison">La maison</a>
+      <a href="#carte">La carte</a>
+      <a href="#avis">Avis</a>
+      <a href="#trouver">Nous trouver</a>
+    </nav>
+    <a class="btn btn-primary" href="#reserver" style="padding:13px 20px">Réserver</a>
+    <button class="burger" id="burger" aria-label="Ouvrir le menu">☰</button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="bg"></div>
+    <div class="wrap">
+      <div class="eyebrow">Zone 3 · Marcory · depuis toujours</div>
+      <h1>Le goût d’Abidjan,<br><em>servi sans détour.</em></h1>
+      <p class="sub">Poisson braisé, attiéké, kedjenou et grillades au feu de bois. Une table de quartier devenue une adresse que l’on recommande — à deux pas du Plateau.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#reserver">Réserver une table</a>
+        <a class="btn btn-ghost" href="#carte">Découvrir la carte</a>
+      </div>
+      <div class="rating"><span class="stars">★★★★★</span><b>4,3 / 5</b><span>· 1 145 avis Google</span></div>
+    </div>
+    <div class="scroll">Faites défiler</div>
+  </section>
+
+  <section id="maison">
+    <div class="wrap story">
+      <div class="photo reveal"><img src="assets/resto-salle.jpg" alt="Salle du restaurant Chez Richard’s"><div class="badge"><b>1 145</b><span>avis Google</span></div></div>
+      <div class="text reveal d1">
+        <div class="kicker">La maison</div>
+        <h2>Une table simple.<br><em>Une cuisine qui reste.</em></h2>
+        <p>Chez Richard’s, on ne cherche pas à impressionner. On sert ce qu’Abidjan aime : des produits frais, du feu, des sauces longues et du poisson entier braisé comme il se doit.</p>
+        <p>La salle accueille les déjeuners d’affaires du Plateau, les familles du week-end et les habitués de Zone 3 qui viennent sans regarder la carte. C’est le plus beau compliment.</p>
+        <p class="signature">« Ici, on ne vend pas un plat. On fait revenir les gens. »</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu" id="carte">
+    <div class="wrap">
+      <div class="kicker">La carte</div>
+      <h2>Ce qui sort<br><em>de la cuisine.</em></h2>
+      <p class="lead">Une sélection de la carte, servie midi et soir. Les prix sont indiqués en francs CFA.</p>
+      <div class="tabs" id="tabs">
+        <button class="tab active" data-cat="entrees">Entrées</button>
+        <button class="tab" data-cat="plats">Plats</button>
+        <button class="tab" data-cat="grillades">Grillades</button>
+        <button class="tab" data-cat="desserts">Desserts</button>
+        <button class="tab" data-cat="boissons">Boissons</button>
+      </div>
+      <div class="dishes" id="dishes"></div>
+      <p class="note">Carte d’exemple pour la démonstration. Les prix et plats réels sont à confirmer avec l’établissement.</p>
+    </div>
+  </section>
+
+  <section class="signature-section">
+    <div class="img"></div>
+    <div class="box">
+      <div class="kicker">Le plat signature</div>
+      <h3>Poulet braisé, attiéké, sauce piment</h3>
+      <p>Mariné, braisé lentement, servi avec un attiéké fin et une sauce piment maison. Le plat que l’on commande la première fois — et que l’on reprend ensuite.</p>
+      <div class="price">9 500 FCFA</div>
+      <a class="btn btn-dark" href="#reserver" style="align-self:flex-start;margin-top:24px">Réserver pour ce soir</a>
+    </div>
+  </section>
+
+  <section class="booking" id="reserver">
+    <div class="wrap grid">
+      <div class="reveal">
+        <div class="kicker" style="color:var(--gold)">Réservation</div>
+        <h2>Votre table,<br><em>en trente secondes.</em></h2>
+        <p>Déjeuner d’affaires, dîner en famille ou table pour deux : indiquez vos préférences, nous confirmons par appel ou WhatsApp. Service continu de 11 h 30 à 23 h.</p>
+        <p style="font-size:12px;color:rgba(246,240,229,.4);margin-top:24px">Pour les groupes de plus de 8 personnes, appelez directement le 27 21 24 81 85.</p>
+      </div>
+      <form class="reserve reveal d1" id="bookingForm">
+        <div class="field"><label for="date">Date</label><input id="date" type="date" required></div>
+        <div class="field"><label for="time">Heure</label><select id="time" required><option>12:00</option><option>12:30</option><option>13:00</option><option>19:00</option><option>19:30</option><option>20:00</option><option>20:30</option><option>21:00</option></select></div>
+        <div class="field"><label for="guests">Personnes</label><select id="guests"><option>2 personnes</option><option>3 personnes</option><option>4 personnes</option><option>5 personnes</option><option>6 personnes</option><option>8 personnes</option></select></div>
+        <div class="field"><label for="name">Nom</label><input id="name" type="text" placeholder="Votre nom" required></div>
+        <div class="field full"><label for="phone">Téléphone / WhatsApp</label><input id="phone" type="tel" placeholder="+225 07 00 00 00 00" required></div>
+        <button class="btn btn-primary" type="submit">Demander la réservation</button>
+        <div class="success" id="success"></div>
+        <p class="formnote">Démo : aucune réservation n’est réellement envoyée. En production, la demande part vers WhatsApp ou l’agenda du restaurant.</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="reviews" id="avis">
+    <div class="wrap">
+      <div class="review-head">
+        <div>
+          <div class="kicker">Les avis</div>
+          <h2 style="margin-bottom:6px">Ce que disent<br><em>les habitués.</em></h2>
+        </div>
+        <div class="big-rating"><b>4,3</b><div><span class="stars">★★★★★</span><small>1 145 avis Google · Zone 3</small></div></div>
+      </div>
+      <div class="review-grid">
+        <div class="review reveal"><div class="stars">★★★★★</div><p>« Le poisson braisé est parfait, la sauce piment aussi. On revient à chaque passage à Abidjan. »</p><span>Aïcha K. · avis d’exemple</span></div>
+        <div class="review reveal d1"><div class="stars">★★★★★</div><p>« Service rapide le midi, cadre agréable. Idéal pour un déjeuner de travail sans se ruiner. »</p><span>Jean-Marc D. · avis d’exemple</span></div>
+        <div class="review reveal d2"><div class="stars">★★★★☆</div><p>« On y va en famille le week-end. Les enfants adorent l’attiéké et le personnel est patient. »</p><span>Fatou S. · avis d’exemple</span></div>
+      </div>
+      <p style="font-size:11px;color:#7d7266;margin-top:24px">Note et volume d’avis publics relevés sur Google Maps le 29/10/2026. Les témoignages ci-dessus sont des exemples rédactionnels.</p>
+    </div>
+  </section>
+
+  <section class="visit" id="trouver" style="padding:0">
+    <div class="info">
+      <div class="kicker">Nous trouver</div>
+      <h2>Au cœur de<br><em>Zone 3.</em></h2>
+      <div class="info-row"><div><b>Adresse</b>Rue Clément Ader, Zone 3 — Marcory, Abidjan</div></div>
+      <div class="info-row"><div><b>Téléphone</b><a href="tel:+2252721248185">27 21 24 81 85</a></div></div>
+      <div class="info-row"><div><b>Horaires</b>Lundi – samedi : 11 h 30 – 23 h<br>Dimanche : 12 h – 22 h</div></div>
+      <div class="info-row" style="border-bottom:0"><div><b>Accès</b>Parking à proximité · Salle climatisée · Groupes acceptés</div></div>
+      <a class="btn btn-primary" href="tel:+2252721248185" style="margin-top:22px">Appeler le restaurant</a>
+    </div>
+    <div class="map">
+      <iframe title="Carte — Chez Richard’s, Zone 3 Abidjan" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-4.005%2C5.300%2C-3.975%2C5.320&amp;layer=mapnik&amp;marker=5.3095%2C-3.9900"></iframe>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <div class="logo" style="margin-bottom:12px">Chez Richard’s<span>Restaurant · Abidjan</span></div>
+        <div>Rue Clément Ader, Zone 3<br>Marcory, Abidjan — Côte d’Ivoire</div>
+      </div>
+      <div class="foot-links">
+        <a href="#maison">La maison</a><a href="#carte">La carte</a><a href="#reserver">Réserver</a><a href="#trouver">Nous trouver</a>
+      </div>
+    </div>
+    <div class="legal">
+      <span>Maquette de démonstration non officielle · contenus d’exemple · octobre 2026</span>
+      <span>Données publiques GoAfricaOnline / Google Maps</span>
+    </div>
+  </div>
+</footer>
+
+<div class="mobilebar">
+  <a class="call" href="tel:+2252721248185">Appeler</a>
+  <a class="book" href="#reserver">Réserver</a>
+</div>
+
+<script>
+  const dishes = {
+    entrees:[
+      ["Avocat crevettes","Avocat, crevettes roses, citron vert, huile d’olive","6 500"],
+      ["Accras de morue","Beignets croustillants, sauce piment doux","4 500"],
+      ["Salade de gombos","Gombos frais, tomate, oignon, vinaigrette maison","4 000"],
+      ["Velouté d’arachide","Arachide grillée, légumes de saison, huile de palme","4 500"]
+    ],
+    plats:[
+      ["Poulet braisé, attiéké","Poulet mariné, braisé au feu, attiéké, sauce piment","9 500"],
+      ["Poisson braisé entier","Poisson du jour, attiéké ou alloco, sauce tomate","12 000"],
+      ["Kedjenou de poulet","Poulet mijoté, tomate, aubergine, riz parfumé","9 000"],
+      ["Sauce graine","Sauce de palme, viande de bœuf, riz blanc","8 500"],
+      ["Attiéké poisson","Attiéké fin, poisson frit, tomate, oignon","7 500"]
+    ],
+    grillades:[
+      ["Brochettes de bœuf","Trois brochettes, oignons grillés, alloco","7 000"],
+      ["Côtes de porc","Marinade épicée, frites de plantain","9 500"],
+      ["Gambas grillées","Six gambas, beurre citronné, riz","14 000"],
+      ["Poulet entier braisé","Pour deux personnes, attiéké et alloco","16 000"]
+    ],
+    desserts:[
+      ["Dêguê","Couscous de mil, lait caillé, vanille","3 500"],
+      ["Ananas rôti","Ananas frais, sirop de gingembre, menthe","4 000"],
+      ["Fondant chocolat","Cœur fondant, glace coco","4 500"],
+      ["Salade de fruits","Fruits de saison, citron vert","3 500"]
+    ],
+    boissons:[
+      ["Bissap maison","Hibiscus, gingembre, menthe","2 000"],
+      ["Jus de gingembre","Gingembre frais, citron","2 000"],
+      ["Jus de mangue","Mangue fraîche pressée","2 500"],
+      ["Eau minérale","50 cl ou 1,5 L","1 000"]
+    ]
+  };
+
+  const grid = document.getElementById('dishes');
+  function render(cat){
+    grid.innerHTML = dishes[cat].map((d,i)=>`
+      <div class="dish" style="animation-delay:${i*45}ms">
+        <div><h3>${d[0]}</h3><p>${d[1]}</p></div><b>${d[2]} F</b>
+      </div>`).join('');
+  }
+  render('entrees');
+  document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    render(t.dataset.cat);
+  }));
+
+  const header = document.getElementById('header');
+  addEventListener('scroll',()=>header.classList.toggle('solid',scrollY>40),{passive:true});
+
+  const io = new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  document.getElementById('burger').addEventListener('click',()=>{
+    document.getElementById('maison').scrollIntoView({behavior:'smooth'});
+  });
+
+  const form = document.getElementById('bookingForm');
+  form.addEventListener('submit',e=>{
+    e.preventDefault();
+    const date = document.getElementById('date').value || 'date à préciser';
+    const time = document.getElementById('time').value;
+    const guests = document.getElementById('guests').value;
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const msg = `Bonjour Chez Richard’s, je souhaite réserver une table.\nNom : ${name}\nTéléphone : ${phone}\nDate : ${date} à ${time}\n${guests}\n(demande envoyée depuis la maquette de démonstration)`;
+    const s = document.getElementById('success');
+    s.innerHTML = `Merci ${name}. Votre demande pour <b>${guests.toLowerCase()}</b> le <b>${date}</b> à <b>${time}</b> est prête.<br><a href="https://wa.me/2252721248185?text=${encodeURIComponent(msg)}" target="_blank" rel="noopener" style="color:#f0d9ae;border-bottom:1px solid #f0d9ae">Confirmer sur WhatsApp</a> · ou appelez le 27 21 24 81 85.<br><span style="opacity:.55">Démo : aucun message n’est envoyé automatiquement.</span>`;
+    s.classList.add('show');
+    s.scrollIntoView({behavior:'smooth',block:'nearest'});
+  });
+
+  const d = new Date(); d.setDate(d.getDate()+1);
+  document.getElementById('date').value = d.toISOString().slice(0,10);
+</script>
+</body>
+</html>

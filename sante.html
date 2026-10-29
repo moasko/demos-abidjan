@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Centre Médical Chardy — Maquette démo · Plateau, Abidjan</title>
+<meta name="description" content="Maquette de démonstration du site du Centre Médical Chardy, Plateau, Abidjan. Spécialités et prise de rendez-vous.">
+<style>
+  :root{
+    --teal:#0b5c66;--teal2:#0f7a84;--deep:#073b42;--mint:#e8f3f2;--paper:#f7faf9;
+    --ink:#122629;--muted:#64777a;--line:#d8e4e2;--coral:#d97757;--white:#fff;
+    --max:1180px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:"Segoe UI","Helvetica Neue",Arial,sans-serif;line-height:1.6}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  button,input,select,textarea{font:inherit}
+  .demo{background:var(--deep);color:#cfe0dd;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;text-align:center;padding:8px 14px}
+  .demo b{color:#8fd3c7}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 26px}
+  /* header */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .nav{height:80px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .logo{display:flex;align-items:center;gap:12px}
+  .cross{width:40px;height:40px;background:var(--teal);border-radius:12px;display:flex;align-items:center;justify-content:center;flex:none}
+  .cross svg{width:20px;height:20px;fill:#fff}
+  .logo b{display:block;font-size:15px;font-weight:700;letter-spacing:-.01em;line-height:1.1;color:var(--deep)}
+  .logo span{display:block;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+  nav.links{display:flex;gap:26px;font-size:12px;color:#43595c;font-weight:500}
+  nav.links a{padding:4px 0;position:relative}
+  nav.links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--coral);transition:width .3s}
+  nav.links a:hover::after{width:100%}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 22px;border-radius:99px;border:0;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:.03em;transition:background .25s,color .25s,transform .25s,box-shadow .25s;white-space:nowrap}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-teal{background:var(--teal);color:#fff;box-shadow:0 10px 24px rgba(11,92,102,.22)}
+  .btn-teal:hover{background:var(--deep)}
+  .btn-outline{background:transparent;border:1px solid rgba(11,92,102,.28);color:var(--teal)}
+  .btn-outline:hover{background:var(--mint)}
+  .burger{display:none;width:42px;height:42px;border:1px solid var(--line);background:#fff;border-radius:10px;cursor:pointer;color:var(--teal)}
+  .mnav{display:none;position:fixed;top:80px;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);z-index:49;padding:10px 26px 18px;box-shadow:0 18px 30px rgba(7,59,66,.1)}
+  .mnav.open{display:block}
+  .mnav a{display:block;padding:13px 0;border-bottom:1px solid #eef4f3;font-size:13px}
+  /* hero */
+  .hero{padding:58px 0 0;overflow:hidden}
+  .hero .grid{display:grid;grid-template-columns:1.02fr .98fr;gap:60px;align-items:center}
+  .kicker{display:inline-flex;align-items:center;gap:9px;background:var(--mint);color:var(--teal);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:7px 13px;border-radius:99px;margin-bottom:22px}
+  .kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--coral)}
+  h1{font-size:clamp(42px,5.4vw,68px);line-height:1.02;letter-spacing:-.045em;margin:0 0 20px;color:var(--deep);font-weight:700}
+  h1 span{color:var(--teal2);font-weight:400}
+  .hero p{font-size:16px;color:#52696c;line-height:1.75;max-width:480px;margin:0 0 28px}
+  .actions{display:flex;gap:12px;flex-wrap:wrap}
+  .trust{display:flex;align-items:center;gap:14px;margin-top:26px;font-size:12px;color:var(--muted)}
+  .trust .stars{color:#e0a33e;letter-spacing:2px;font-size:14px}
+  .trust b{color:var(--deep)}
+  .hero .img{position:relative;padding-bottom:34px}
+  .hero .img img{border-radius:28px 28px 120px 28px;aspect-ratio:1/1.06;object-fit:cover;box-shadow:0 30px 60px rgba(7,59,66,.18)}
+  .floating{position:absolute;left:-26px;bottom:0;background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px 20px;box-shadow:0 18px 40px rgba(7,59,66,.12);display:flex;gap:13px;align-items:center;max-width:270px}
+  .floating .ic{width:40px;height:40px;border-radius:12px;background:var(--mint);display:flex;align-items:center;justify-content:center;flex:none}
+  .floating b{display:block;font-size:13px;color:var(--deep)}
+  .floating span{font-size:11px;color:var(--muted)}
+  /* info bar */
+  .infobar{margin-top:44px;background:#fff;border:1px solid var(--line);border-radius:18px;display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden;box-shadow:0 14px 34px rgba(7,59,66,.06)}
+  .infobar > div{padding:20px 22px;border-right:1px solid var(--line);display:flex;gap:12px;align-items:center}
+  .infobar > div:last-child{border-right:0}
+  .infobar svg{width:19px;height:19px;stroke:var(--teal);fill:none;stroke-width:1.7;flex:none}
+  .infobar b{display:block;font-size:12.5px;color:var(--deep)}
+  .infobar span{display:block;font-size:11px;color:var(--muted)}
+  /* sections */
+  section{padding:92px 0}
+  .head{max-width:620px;margin-bottom:42px}
+  .head .kicker{margin-bottom:16px}
+  h2{font-size:clamp(32px,4vw,46px);line-height:1.08;letter-spacing:-.035em;margin:0 0 16px;color:var(--deep);font-weight:700}
+  h2 span{color:var(--teal2);font-weight:400}
+  .lead{font-size:15.5px;color:#52696c;line-height:1.8;margin:0}
+  .specialties{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .spec{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:28px;transition:transform .3s,box-shadow .3s,border-color .3s}
+  .spec:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(7,59,66,.08);border-color:#bed7d3}
+  .spec .ic{width:46px;height:46px;border-radius:14px;background:var(--mint);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+  .spec svg{width:23px;height:23px;stroke:var(--teal);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  .spec h3{font-size:16px;margin:0 0 6px;color:var(--deep);letter-spacing:-.01em}
+  .spec p{font-size:12.5px;color:var(--muted);line-height:1.65;margin:0}
+  /* booking */
+  .booking{background:var(--deep);color:#fff;position:relative;overflow:hidden}
+  .booking::before{content:"";position:absolute;right:-160px;top:-160px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(15,122,132,.55),transparent 65%)}
+  .booking .grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center;position:relative}
+  .booking .kicker{background:rgba(255,255,255,.09);color:#a9ded6}
+  .booking h2{color:#fff}
+  .booking h2 span{color:#9fd8d0}
+  .booking p{color:rgba(255,255,255,.66);font-size:14.5px;line-height:1.8}
+  .booking .note{font-size:11.5px;color:rgba(255,255,255,.42);margin-top:22px}
+  form.rdv{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:30px;display:grid;grid-template-columns:1fr 1fr;gap:14px;backdrop-filter:blur(8px)}
+  form.rdv .field{display:flex;flex-direction:column;gap:6px}
+  form.rdv .full{grid-column:1/-1}
+  form.rdv label{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.52)}
+  form.rdv input,form.rdv select{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);color:#fff;padding:12px 13px;border-radius:9px;outline:none;font-size:13.5px}
+  form.rdv input:focus,form.rdv select:focus{border-color:#7cc9be;background:rgba(255,255,255,.1)}
+  form.rdv select option{background:var(--deep)}
+  .slots{display:flex;gap:7px;flex-wrap:wrap}
+  .slot{padding:9px 13px;border:1px solid rgba(255,255,255,.2);border-radius:99px;background:transparent;color:rgba(255,255,255,.75);cursor:pointer;font-size:11.5px;transition:.2s}
+  .slot:hover{border-color:#7cc9be}
+  .slot.active{background:#7cc9be;border-color:#7cc9be;color:var(--deep);font-weight:700}
+  form.rdv .btn{grid-column:1/-1;margin-top:4px;background:var(--coral);box-shadow:0 10px 24px rgba(217,119,87,.25)}
+  form.rdv .btn:hover{background:#c46647}
+  .confirm{grid-column:1/-1;display:none;background:rgba(124,201,190,.14);border:1px solid rgba(124,201,190,.45);border-radius:12px;padding:16px;font-size:12.5px;color:#d5f0eb;line-height:1.65}
+  .confirm.show{display:block;animation:pop .35s ease}
+  @keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  /* visit */
+  .visit{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
+  .acc{border-top:1px solid var(--line)}
+  .acc details{border-bottom:1px solid var(--line);padding:6px 0}
+  .acc summary{cursor:pointer;list-style:none;padding:16px 30px 16px 0;font-size:14.5px;font-weight:600;color:var(--deep);position:relative}
+  .acc summary::-webkit-details-marker{display:none}
+  .acc summary::after{content:"+";position:absolute;right:0;top:13px;font-size:20px;color:var(--teal);font-weight:400;transition:transform .25s}
+  .acc details[open] summary::after{transform:rotate(45deg)}
+  .acc p{font-size:13px;color:var(--muted);line-height:1.75;margin:0 0 18px;padding-right:20px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px}
+  .card h3{font-size:15px;margin:0 0 10px;color:var(--deep)}
+  .card p{font-size:12.5px;color:var(--muted);margin:0 0 8px;line-height:1.65}
+  .card .line{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:1px solid #eef4f3;font-size:12.5px}
+  .card .line:last-child{border-bottom:0}
+  .card .line b{color:var(--deep);font-weight:600}
+  /* team */
+  .team{background:var(--mint)}
+  .grid3.team-grid .member{background:#fff;border-radius:18px;padding:26px;border:1px solid #d3e5e2}
+  .avatar{width:52px;height:52px;border-radius:50%;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;margin-bottom:14px;letter-spacing:.02em}
+  .member h3{font-size:15px;margin:0 0 3px;color:var(--deep)}
+  .member span{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal2);font-weight:600}
+  .member p{font-size:12px;color:var(--muted);margin:10px 0 0;line-height:1.65}
+  /* reviews */
+  .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:34px}
+  .review{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px}
+  .review .stars{color:#e0a33e;letter-spacing:2px;font-size:13px;margin-bottom:10px}
+  .review p{font-size:13.5px;line-height:1.7;color:#3c5255;margin:0 0 14px}
+  .review span{font-size:10.5px;color:var(--muted);letter-spacing:.06em}
+  .rating-big{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 20px}
+  .rating-big b{font-size:30px;line-height:1;color:var(--deep)}
+  .rating-big small{display:block;font-size:10.5px;color:var(--muted)}
+  /* footer */
+  footer{background:#062f35;color:rgba(255,255,255,.55);padding:52px 0 34px;font-size:12px}
+  .foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;margin-bottom:34px}
+  .foot h4{color:#fff;font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin:0 0 12px;font-weight:600}
+  .foot a{display:block;margin-bottom:7px;color:rgba(255,255,255,.62)}
+  .foot a:hover{color:#8fd3c7}
+  .foot p{margin:0 0 7px;color:rgba(255,255,255,.55);line-height:1.7}
+  .legal{border-top:1px solid rgba(255,255,255,.12);padding-top:18px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:10px;color:rgba(255,255,255,.35)}
+  /* mobile bar */
+  .mobilebar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:48;background:rgba(6,47,53,.97);backdrop-filter:blur(10px);padding:10px 12px;gap:10px;border-top:1px solid rgba(255,255,255,.12)}
+  .mobilebar a{flex:1;text-align:center;padding:13px;border-radius:99px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+  .mobilebar .call{border:1px solid rgba(255,255,255,.28);color:#fff}
+  .mobilebar .book{background:var(--coral);color:#fff}
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .d1{transition-delay:.08s}.d2{transition-delay:.16s}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.reveal{opacity:1;transform:none}}
+  @media(max-width:1000px){
+    nav.links{display:none}.burger{display:block}
+    .hero .grid,.booking .grid,.visit{grid-template-columns:1fr}
+    .hero .img{order:-1;max-width:520px;margin:0 auto;padding-bottom:30px}
+    .floating{left:0}
+    .infobar{grid-template-columns:1fr 1fr}
+    .infobar > div:nth-child(2){border-right:0}
+    .infobar > div:nth-child(3),.infobar > div:nth-child(4){border-top:1px solid var(--line)}
+    .grid3,.reviews-grid{grid-template-columns:1fr 1fr}
+    .foot{grid-template-columns:1fr 1fr}
+    section{padding:68px 0}
+    .mobilebar{display:flex}
+    footer{padding-bottom:96px}
+  }
+  @media(max-width:640px){
+    .wrap{padding:0 18px}
+    .grid3,.reviews-grid,.infobar{grid-template-columns:1fr}
+    .infobar > div{border-right:0;border-top:1px solid var(--line)}
+    .infobar > div:first-child{border-top:0}
+    .foot{grid-template-columns:1fr}
+    form.rdv{grid-template-columns:1fr;padding:22px}
+    .hero{padding-top:34px}
+    h1{font-size:40px}
+    .actions .btn{flex:1}
+    .booking{padding:60px 0}
+  }
+</style>
+</head>
+<body>
+
+<div class="demo">Maquette de démonstration — site non officiel · <b>contenus d’exemple</b></div>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top">
+      <span class="cross"><svg viewBox="0 0 24 24"><path d="M10 3h4v7h7v4h-7v7h-4v-7H3v-4h7z"/></svg></span>
+      <span><b>Centre Médical Chardy</b><span>Plateau · Abidjan</span></span>
+    </a>
+    <nav class="links">
+      <a href="#specialites">Spécialités</a>
+      <a href="#rdv">Rendez-vous</a>
+      <a href="#equipe">Équipe</a>
+      <a href="#infos">Infos pratiques</a>
+    </nav>
+    <a class="btn btn-teal" href="#rdv">Prendre rendez-vous</a>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+</header>
+<div class="mnav" id="mnav">
+  <a href="#specialites">Spécialités</a>
+  <a href="#rdv">Prendre rendez-vous</a>
+  <a href="#equipe">Équipe</a>
+  <a href="#avis">Avis</a>
+  <a href="#infos">Infos pratiques</a>
+</div>
+
+<main id="top">
+  <section class="hero" style="padding-bottom:0">
+    <div class="wrap">
+      <div class="grid">
+        <div>
+          <div class="kicker"><span class="dot"></span> Centre médical · Plateau</div>
+          <h1>Votre santé,<br><span>sans attente.</span></h1>
+          <p>Médecine générale et spécialités au cœur du Plateau. Prenez rendez-vous en ligne, préparez votre visite et trouvez le bon praticien en quelques minutes.</p>
+          <div class="actions">
+            <a class="btn btn-teal" href="#rdv">Prendre rendez-vous</a>
+            <a class="btn btn-outline" href="tel:+2252720339000">27 20 33 90 00</a>
+          </div>
+          <div class="trust"><span class="stars">★★★★★</span><b>4,5 / 5</b><span>· 30 avis Google · Av. Chardy</span></div>
+        </div>
+        <div class="img reveal">
+          <img src="assets/sante-hero.jpg" alt="Accueil du Centre Médical Chardy">
+          <div class="floating">
+            <div class="ic"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#0b5c66" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+            <div><b>Ouvert aujourd’hui</b><span>Lun – Sam · 7 h 30 – 19 h</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="infobar">
+        <div><svg viewBox="0 0 24 24"><path d="M12 21s7-5.5 7-11a7 7 0 10-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><div><b>26 Av. Chardy</b><span>Face à l’AIP, Plateau</span></div></div>
+        <div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><b>Lun – Sam</b><span>7 h 30 – 19 h</span></div></div>
+        <div><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-3 2a12 12 0 005 5l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg><div><b>27 20 33 90 00</b><span>Accueil &amp; urgences</span></div></div>
+        <div><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg><div><b>RDV en ligne</b><span>Confirmation immédiate</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="specialties" id="specialites">
+    <div class="wrap">
+      <div class="head">
+        <div class="kicker">Nos spécialités</div>
+        <h2>Une prise en charge<br><span>complète.</span></h2>
+        <p class="lead">Du suivi général aux consultations spécialisées, avec un laboratoire et un plateau technique sur place.</p>
+      </div>
+      <div class="grid3">
+        <div class="spec reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M6 3v6a6 6 0 0012 0V3"/><path d="M6 3H4M18 3h2M12 15v3a3 3 0 006 0v-2"/></svg></div><h3>Médecine générale</h3><p>Consultations, suivi adulte, bilans de santé et prise en charge des maladies courantes.</p></div>
+        <div class="spec reveal d1"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-6 8-6s8 2 8 6"/></svg></div><h3>Pédiatrie</h3><p>Suivi de croissance, vaccinations, consultations du nourrisson et de l’enfant.</p></div>
+        <div class="spec reveal d2"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.5-7 10-7 10z"/></svg></div><h3>Gynécologie</h3><p>Suivi de grossesse, consultations gynécologiques, contraception et dépistage.</p></div>
+        <div class="spec reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 9a2 2 0 002 3h10a2 2 0 002-3l-5-9V3"/><path d="M7.5 15h9"/></svg></div><h3>Laboratoire</h3><p>Analyses sanguines, bilans, dépistages et résultats transmis rapidement.</p></div>
+        <div class="spec reveal d1"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h10M7 13h6"/></svg></div><h3>Imagerie</h3><p>Échographie, radiologie et examens sur place, sur prescription médicale.</p></div>
+        <div class="spec reveal d2"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 5-3.5 7.5-7 9-3.5-1.5-7-4-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Vaccinations</h3><p>Calendrier vaccinal, rappels et conseils pour les voyages.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="booking" id="rdv">
+    <div class="wrap grid">
+      <div class="reveal">
+        <div class="kicker">Rendez-vous</div>
+        <h2>Choisissez<br><span>votre créneau.</span></h2>
+        <p>La demande est confirmée par l’accueil dans la journée. Pour une urgence, appelez directement le 27 20 33 90 00.</p>
+        <p class="note">Démo : le formulaire ne transmet aucune donnée médicale.</p>
+      </div>
+      <form class="rdv reveal d1" id="rdvForm">
+        <div class="field"><label for="specialty">Spécialité</label><select id="specialty"><option>Médecine générale</option><option>Pédiatrie</option><option>Gynécologie</option><option>Laboratoire</option><option>Imagerie</option><option>Vaccination</option></select></div>
+        <div class="field"><label for="date">Date souhaitée</label><input id="date" type="date" required></div>
+        <div class="field full"><label>Créneau</label><div class="slots" id="slots"><button type="button" class="slot active">08:30</button><button type="button" class="slot">09:30</button><button type="button" class="slot">10:30</button><button type="button" class="slot">14:00</button><button type="button" class="slot">15:30</button><button type="button" class="slot">17:00</button></div></div>
+        <div class="field"><label for="name">Nom complet</label><input id="name" type="text" placeholder="Votre nom" required></div>
+        <div class="field"><label for="phone">Téléphone</label><input id="phone" type="tel" placeholder="+225 ..." required></div>
+        <button class="btn" type="submit">Demander le rendez-vous</button>
+        <div class="confirm" id="confirm"></div>
+      </form>
+    </div>
+  </section>
+
+  <section id="equipe">
+    <div class="wrap">
+      <div class="head">
+        <div class="kicker">L’équipe</div>
+        <h2>Des praticiens<br><span>disponibles et attentifs.</span></h2>
+        <p class="lead">Une équipe pluridisciplinaire, habituée aux familles, aux actifs du Plateau et aux patients venus de toute la commune.</p>
+      </div>
+      <div class="grid3 team-grid">
+        <div class="member reveal"><div class="avatar">MG</div><h3>Médecine générale</h3><span>Consultations adultes</span><p>Suivi médical, bilans de santé et orientation vers les spécialités adaptées.</p></div>
+        <div class="member reveal d1"><div class="avatar">PD</div><h3>Pédiatrie</h3><span>Nourrissons &amp; enfants</span><p>Croissance, vaccinations et accompagnement des parents au quotidien.</p></div>
+        <div class="member reveal d2"><div class="avatar">GY</div><h3>Gynécologie</h3><span>Suivi de la femme</span><p>Grossesse, prévention et consultations de routine dans un cadre confidentiel.</p></div>
+      </div>
+      <p style="font-size:10.5px;color:#7a8f91;margin-top:22px">Profils et intitulés d’exemple. Les noms réels des praticiens sont à intégrer avec l’accord du centre.</p>
+    </div>
+  </section>
+
+  <section class="visit" id="infos" style="background:#fff;border-top:1px solid var(--line)">
+    <div class="wrap visit" style="padding:0">
+      <div>
+        <div class="kicker">Préparer sa visite</div>
+        <h2 style="margin-bottom:26px">Moins de questions,<br><span>plus de soins.</span></h2>
+        <div class="acc">
+          <details open><summary>Quels documents apporter ?</summary><p>Une pièce d’identité, votre carte d’assurance ou de mutuelle, les ordonnances récentes et les résultats d’examens en lien avec la consultation.</p></details>
+          <details><summary>Comment se déroule une première consultation ?</summary><p>L’accueil enregistre votre dossier, puis un infirmier prend vos constantes avant la consultation. Prévoyez 45 minutes sur place.</p></details>
+          <details><summary>Les assurances sont-elles acceptées ?</summary><p>Les principales mutuelles et assurances santé sont acceptées. La liste exacte est à confirmer avec l’accueil lors de la prise de rendez-vous.</p></details>
+          <details><summary>Puis-je venir sans rendez-vous ?</summary><p>Les urgences sont reçues pendant les heures d’ouverture. Pour les consultations programmées, le rendez-vous en ligne permet d’éviter l’attente.</p></details>
+        </div>
+      </div>
+      <div>
+        <div class="card">
+          <h3>Informations pratiques</h3>
+          <div class="line"><span>Adresse</span><b>26 Av. Chardy, Plateau</b></div>
+          <div class="line"><span>Téléphone</span><b>27 20 33 90 00</b></div>
+          <div class="line"><span>Horaires</span><b>Lun – Sam · 7 h 30 – 19 h</b></div>
+          <div class="line"><span>Accès</span><b>Face à l’AIP · parking limité</b></div>
+          <div class="line"><span>Paiement</span><b>Espèces, carte, Mobile Money</b></div>
+        </div>
+        <div class="card" style="margin-top:16px;background:var(--mint);border-color:#cfe4e1">
+          <h3>Une urgence ?</h3>
+          <p>Appelez l’accueil avant de vous déplacer : l’équipe vous indiquera la conduite à tenir.</p>
+          <a class="btn btn-teal" href="tel:+2252720339000" style="margin-top:8px">Appeler le centre</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="avis" style="background:var(--paper)">
+    <div class="wrap">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
+        <div class="head" style="margin-bottom:0">
+          <div class="kicker">Avis patients</div>
+          <h2>La confiance<br><span>se mesure aussi.</span></h2>
+        </div>
+        <div class="rating-big"><b>4,5</b><div><span class="stars" style="color:#e0a33e;letter-spacing:2px">★★★★★</span><small>30 avis Google · Centre médical</small></div></div>
+      </div>
+      <div class="reviews-grid">
+        <div class="review reveal"><div class="stars">★★★★★</div><p>« Accueil ponctuel et médecin à l’écoute. J’ai pu avoir un rendez-vous rapidement. »</p><span>Avis d’exemple · patiente</span></div>
+        <div class="review reveal d1"><div class="stars">★★★★★</div><p>« Cabinet propre, personnel rassurant. Les explications sont claires, sans précipitation. »</p><span>Avis d’exemple · patient</span></div>
+        <div class="review reveal d2"><div class="stars">★★★★☆</div><p>« Bien situé sur le Plateau. Prévoir un peu de temps pour le stationnement. »</p><span>Avis d’exemple · patiente</span></div>
+      </div>
+      <p style="font-size:10.5px;color:#7a8f91;margin-top:22px">Note et volume publics relevés sur Google Maps le 29/10/2026. Témoignages rédactionnels d’exemple.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="logo" href="#top" style="margin-bottom:14px">
+          <span class="cross"><svg viewBox="0 0 24 24"><path d="M10 3h4v7h7v4h-7v7h-4v-7H3v-4h7z"/></svg></span>
+          <span><b style="color:#fff">Centre Médical Chardy</b><span>Plateau · Abidjan</span></span>
+        </a>
+        <p>26 Avenue Chardy, face à l’Agence Ivoirienne de Presse<br>Plateau, Abidjan — Côte d’Ivoire</p>
+      </div>
+      <div><h4>Le centre</h4><a href="#specialites">Spécialités</a><a href="#equipe">Équipe</a><a href="#avis">Avis</a><a href="#infos">Infos pratiques</a></div>
+      <div><h4>Contact</h4><a href="tel:+2252720339000">27 20 33 90 00</a><a href="#rdv">Prendre rendez-vous</a><p>Lun – Sam · 7 h 30 – 19 h</p></div>
+    </div>
+    <div class="legal">
+      <span>Maquette de démonstration non officielle · contenus et profils d’exemple · octobre 2026</span>
+      <span>Données publiques GoAfricaOnline / Google Maps</span>
+    </div>
+  </div>
+</footer>
+
+<div class="mobilebar">
+  <a class="call" href="tel:+2252720339000">Appeler</a>
+  <a class="book" href="#rdv">Rendez-vous</a>
+</div>
+
+<script>
+  const mnav=document.getElementById('mnav');
+  document.getElementById('burger').addEventListener('click',()=>mnav.classList.toggle('open'));
+  mnav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mnav.classList.remove('open')));
+
+  document.querySelectorAll('.slot').forEach(s=>s.addEventListener('click',()=>{
+    document.querySelectorAll('.slot').forEach(x=>x.classList.remove('active'));
+    s.classList.add('active');
+  }));
+
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  document.getElementById('rdvForm').addEventListener('submit',e=>{
+    e.preventDefault();
+    const name=document.getElementById('name').value;
+    const spec=document.getElementById('specialty').value;
+    const date=document.getElementById('date').value;
+    const slot=document.querySelector('.slot.active').textContent;
+    const ref='CMD-'+Math.floor(1000+Math.random()*9000);
+    const c=document.getElementById('confirm');
+    c.innerHTML=`<b>Demande enregistrée.</b> ${name}, rendez-vous souhaité en <b>${spec.toLowerCase()}</b> le <b>${date}</b> à <b>${slot}</b>.<br>Référence : <b>${ref}</b>. L’accueil vous rappelle pour confirmer.<br><span style="opacity:.6">Démo : aucune donnée n’est transmise.</span>`;
+    c.classList.add('show'); c.scrollIntoView({behavior:'smooth',block:'nearest'});
+  });
+
+  const d=new Date(); d.setDate(d.getDate()+2);
+  document.getElementById('date').value=d.toISOString().slice(0,10);
+</script>
+</body>
+</html>

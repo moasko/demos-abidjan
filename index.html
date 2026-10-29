@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Démos — Sites pour entreprises d’Abidjan</title>
+<style>
+  :root{--ink:#0d1b2a;--paper:#f4f1ea;--line:#d9d2c4;--muted:#6c746f;--orange:#c96442;--gold:#b98a4b}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:"Segoe UI","Helvetica Neue",Arial,sans-serif}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+  header{padding:34px 0 10px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+  .brand{font-family:Georgia,serif;font-size:20px;letter-spacing:-.01em}
+  .brand span{color:var(--orange)}
+  .headlink{font-size:13px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:2px}
+  .hero{padding:52px 0 40px;display:grid;grid-template-columns:1.25fr .75fr;gap:50px;align-items:end;border-bottom:1px solid var(--line)}
+  .kicker{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);font-weight:700;margin-bottom:18px}
+  h1{font-family:Georgia,serif;font-weight:500;font-size:clamp(38px,5.2vw,68px);line-height:.99;letter-spacing:-.03em;margin:0 0 22px}
+  h1 em{font-style:italic;color:var(--orange)}
+  .lead{font-size:16px;line-height:1.65;color:#45504a;max-width:560px}
+  .hero-note{font-size:12.5px;line-height:1.7;color:var(--muted);border-left:2px solid var(--gold);padding-left:18px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;padding:42px 0 60px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:transform .35s ease,box-shadow .35s ease;position:relative}
+  .card:hover{transform:translateY(-5px);box-shadow:0 24px 50px rgba(13,27,42,.13)}
+  .thumb{aspect-ratio:16/10;overflow:hidden;position:relative;background:#ddd}
+  .thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+  .card:hover .thumb img{transform:scale(1.045)}
+  .thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,16,22,.45),transparent 55%)}
+  .thumb .tag{position:absolute;left:16px;top:16px;background:rgba(255,255,255,.93);color:#16231d;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 11px;border-radius:99px;z-index:1}
+  .thumb .name{position:absolute;left:18px;bottom:16px;color:#fff;font-family:Georgia,serif;font-size:25px;z-index:1;text-shadow:0 2px 14px rgba(0,0,0,.35)}
+  .body{padding:20px 21px 22px;display:flex;flex-direction:column;flex:1}
+  .body p{font-size:13.5px;line-height:1.6;color:#56605a;margin:0 0 16px;flex:1}
+  .meta{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #eee9df;padding-top:14px;font-size:12px;color:var(--muted)}
+  .meta b{color:var(--orange);font-weight:600}
+  .arrow{font-size:18px;transition:transform .3s}
+  .card:hover .arrow{transform:translateX(4px)}
+  footer{border-top:1px solid var(--line);padding:26px 0 44px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:11.5px;color:var(--muted);line-height:1.6}
+  footer a{color:var(--ink);border-bottom:1px solid var(--line)}
+  .banner{background:#101b16;color:#dfe6df;font-size:11px;letter-spacing:.04em;text-align:center;padding:9px 16px}
+  .banner b{color:#e8b56b}
+  @media(max-width:860px){.hero{grid-template-columns:1fr;gap:26px;padding-top:34px}.grid{grid-template-columns:1fr}.thumb .name{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="banner">MAQUETTES DE DÉMONSTRATION — sites non officiels, contenus d’exemple. <b>Réalisées pour proposition commerciale.</b></div>
+<div class="wrap">
+  <header>
+    <div class="brand">Studio <span>·</span> démos Abidjan</div>
+    <span class="headlink">Maquettes non officielles · octobre 2026</span>
+  </header>
+
+  <section class="hero">
+    <div>
+      <div class="kicker">Quatre métiers, quatre preuves</div>
+      <h1>Montrer le site<br><em>avant</em> d’en parler.</h1>
+      <p class="lead">Ces quatre maquettes reprennent les vraies coordonnées et les vraies notes Google d’entreprises d’Abidjan sans site vitrine. Objectif : rendre le bénéfice visible en dix secondes, sur mobile.</p>
+    </div>
+    <div class="hero-note">
+      Chaque démo est autonome : navigation, réservation, filtres et formulaires fonctionnent.<br><br>
+      Les contenus (menus, biens, prestations) sont fictifs et signalés comme tels. Les entreprises citées ne sont pas affiliées à ces maquettes.
+    </div>
+  </section>
+
+  <section class="grid">
+    <a class="card" href="restaurant.html">
+      <div class="thumb"><span class="tag">Restauration</span><img src="assets/resto-hero.jpg" alt="Plat ivoirien grillé"><span class="name">Chez Richard’s</span></div>
+      <div class="body">
+        <p>Menu, réservation de table, commande à emporter et mise en avant des 1 145 avis. Une vitrine qui transforme la réputation en couverts.</p>
+        <div class="meta"><span>Zone 3 · 4,3 ★ · 1 145 avis</span><span class="arrow">→</span></div>
+      </div>
+    </a>
+    <a class="card" href="immobilier.html">
+      <div class="thumb"><span class="tag">Immobilier</span><img src="assets/immo-hero.jpg" alt="Villa moderne à Abidjan"><span class="name">LGP Immobilier</span></div>
+      <div class="body">
+        <p>Recherche de biens, fiches détaillées, estimation gratuite et prise de contact. Le dossier de crédibilité qui manque avant le premier appel.</p>
+        <div class="meta"><span>Cocody Angré · 5,0 ★ · 3 avis</span><span class="arrow">→</span></div>
+      </div>
+    </a>
+    <a class="card" href="sante.html">
+      <div class="thumb"><span class="tag">Santé</span><img src="assets/sante-hero.jpg" alt="Accueil d’un centre médical"><span class="name">Centre Chardy</span></div>
+      <div class="body">
+        <p>Spécialités, prise de rendez-vous en ligne, préparation de la visite et informations pratiques. Réassurer avant de soigner.</p>
+        <div class="meta"><span>Plateau · 4,5 ★ · 30 avis</span><span class="arrow">→</span></div>
+      </div>
+    </a>
+    <a class="card" href="beaute.html">
+      <div class="thumb"><span class="tag">Beauté</span><img src="assets/beaute-hero.jpg" alt="Cabine de soins et spa"><span class="name">Institut Eliphele</span></div>
+      <div class="body">
+        <p>Prestations et tarifs, réservation en ligne, carte cadeau et fidélité. La cliente choisit sur photo, prix et disponibilité.</p>
+        <div class="meta"><span>Cocody · 4,0 ★ · 8 avis</span><span class="arrow">→</span></div>
+      </div>
+    </a>
+  </section>
+
+  <footer>
+    <div>Démos HTML autonomes · Octobre 2026<br>Données publiques GoAfricaOnline &amp; Google Maps</div>
+    <div><a href="restaurant.html">Restaurant</a> · <a href="immobilier.html">Immobilier</a> · <a href="sante.html">Santé</a> · <a href="beaute.html">Beauté</a></div>
+  </footer>
+</div>
+</body>
+</html>
