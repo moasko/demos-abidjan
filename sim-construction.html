@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SIM Construction &amp; Architecture — Gros œuvre, second œuvre, plans 3D à Abidjan</title>
+<meta name="description" content="Maquette de démonstration. SIM Construction &amp; Architecture, Cocody Djorogobité : construction de bâtiments, rénovation, études techniques, plans architecturaux et modélisation 3D. Devis détaillé sous 72 h.">
+<style>
+  :root{
+    --graphite:#0d1316;--steel:#17232a;--slate:#25353d;
+    --concrete:#f1efe9;--paper:#fbfaf6;--white:#fff;
+    --amber:#c9761a;--amber2:#e79a2b;--amber3:#f6c27a;--amber-soft:#fdf4e6;
+    --ink:#101a1d;--muted:#5d6b71;--line:#dcd6ca;--line2:#c8c1b3;
+    --ok:#0e7a5b;--bad:#a8431a;
+    --max:1240px;
+    --sh:0 22px 46px rgba(13,19,22,.10);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:"Segoe UI","Helvetica Neue",Arial,sans-serif;font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit}
+  h1,h2,h3,h4{font-weight:800;letter-spacing:-.025em;line-height:1.06;margin:0}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 26px}
+  .blueprint{background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:36px 36px}
+
+  /* ---------- barre de démonstration ---------- */
+  .demo{position:relative;z-index:60;background:var(--graphite);color:#e9e3d7;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:9px 18px;border-bottom:1px solid #2b3a42}
+  .demo b{color:var(--amber3)}
+  .demo a{color:#fff;border-bottom:1px solid #4c5b63}
+  .demo b{font-weight:700}
+
+  /* ---------- progression + header ---------- */
+  #prog{position:fixed;left:0;top:0;height:3px;width:0;background:linear-gradient(90deg,var(--amber),var(--amber2));z-index:70;transition:width .1s linear}
+  header{position:sticky;top:0;z-index:55;background:rgba(13,19,22,.94);color:#fff;backdrop-filter:blur(10px);border-bottom:1px solid #26343b;transition:padding .25s ease,background .25s}
+  header.small{background:rgba(13,19,22,.99)}
+  .bar{display:flex;align-items:center;gap:26px;padding:16px 0;transition:padding .25s}
+  header.small .bar{padding:10px 0}
+  .brand{display:flex;align-items:center;gap:12px;flex:none}
+  .mark{width:42px;height:42px;flex:none;position:relative;background:linear-gradient(140deg,var(--amber),#a55c11);display:grid;place-items:center;font-weight:800;font-size:14px;letter-spacing:.04em;color:#160d03;box-shadow:0 0 0 1px rgba(255,255,255,.14) inset}
+  .mark::after{content:"";position:absolute;right:-4px;bottom:-4px;width:14px;height:14px;border-right:2px solid var(--amber2);border-bottom:2px solid var(--amber2)}
+  .brand .txt{line-height:1.15}
+  .brand .txt b{display:block;font-size:15.5px;letter-spacing:-.01em;line-height:1.25}
+  .brand .txt span{display:block;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#93a3ab;line-height:1.1}
+  nav.main{display:flex;gap:22px;margin-left:auto;font-size:13px;color:#c3ced3}
+  nav.main a{position:relative;padding:4px 0;transition:color .2s}
+  nav.main a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--amber2);transition:width .25s}
+  nav.main a:hover,nav.main a.on{color:#fff}
+  nav.main a:hover::after,nav.main a.on::after{width:100%}
+  .call{display:flex;align-items:center;gap:9px;font-size:12.5px;color:#e6ded1;border:1px solid #3a4a52;padding:9px 14px;white-space:nowrap}
+  .call:hover{border-color:var(--amber2);color:#fff}
+  .call svg{width:15px;height:15px;flex:none}
+  .burger{display:none;margin-left:auto;background:none;border:1px solid #3a4a52;color:#fff;width:44px;height:40px;cursor:pointer}
+  .burger i{display:block;width:18px;height:2px;background:#fff;margin:3px auto;transition:.25s}
+  .burger.open i:nth-child(1){transform:translateY(5px) rotate(45deg)}
+  .burger.open i:nth-child(2){opacity:0}
+  .burger.open i:nth-child(3){transform:translateY(-5px) rotate(-45deg)}
+  #mnav{display:none;background:var(--steel);border-top:1px solid #2b3a42}
+  #mnav a{display:block;padding:13px 26px;border-bottom:1px solid #223038;font-size:14px;color:#dbe3e6}
+  #mnav a:last-child{border-bottom:0}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;background:var(--graphite);color:#fff;overflow:hidden}
+  .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(900px 460px at 88% 8%,rgba(201,118,26,.28),transparent 62%);pointer-events:none}
+  .hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.03fr .97fr;gap:56px;align-items:center;padding-top:74px;padding-bottom:74px}
+  .kicker{display:flex;align-items:center;gap:11px;font-size:10.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--amber3)}
+  .kicker::before{content:"";width:34px;height:1px;background:var(--amber2)}
+  h1{font-size:clamp(38px,5.1vw,66px);margin:20px 0 0}
+  h1 em{font-style:normal;color:var(--amber2);position:relative;white-space:nowrap}
+  h1 em::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:7px;background:rgba(201,118,26,.22);z-index:-1}
+  .lead{color:#c2ccd1;font-size:16.5px;max-width:520px;margin:22px 0 0}
+  .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:15px 24px;font-size:12.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;border:1px solid transparent;background:transparent;cursor:pointer;transition:.22s}
+  .btn.amber{background:var(--amber);color:#fff}
+  .btn.amber:hover{background:var(--amber2);color:#160d03;transform:translateY(-2px)}
+  .btn.line{border-color:#4a5a62;color:#e7eef1}
+  .btn.line:hover{border-color:var(--amber2);color:#fff}
+  .btn.dark{background:var(--graphite);color:#fff}
+  .btn.dark:hover{background:var(--slate);transform:translateY(-2px)}
+  .btn.ghost{border-color:var(--line2);color:var(--ink);background:#fff}
+  .btn.ghost:hover{border-color:var(--amber);color:var(--amber)}
+  .btn svg{width:16px;height:16px}
+  .hero .facts{display:flex;gap:28px;flex-wrap:wrap;margin-top:40px;padding-top:26px;border-top:1px solid #2b3a42}
+  .facts div b{display:block;font-size:27px;letter-spacing:-.03em;color:#fff}
+  .facts div span{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#8d9ba2}
+  .shot{position:relative}
+  .shot img{width:100%;height:520px;object-fit:cover;filter:saturate(1.04) contrast(1.03)}
+  .shot::before,.shot::after{content:"";position:absolute;width:52px;height:52px;border:2px solid var(--amber2)}
+  .shot::before{left:-14px;top:-14px;border-right:0;border-bottom:0}
+  .shot::after{right:-14px;bottom:-14px;border-left:0;border-top:0}
+  .shot .cap{position:absolute;left:0;bottom:0;right:0;background:linear-gradient(transparent,rgba(9,14,16,.9));padding:44px 20px 18px;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#e3e9ec}
+  .shot .badge{position:absolute;right:16px;top:16px;background:rgba(13,19,22,.82);border:1px solid #3d4d55;color:#f0e6d6;font-size:10px;letter-spacing:.16em;text-transform:uppercase;padding:7px 11px}
+
+  /* ---------- bandeau défilant ---------- */
+  .ticker{background:var(--amber);color:#20140a;overflow:hidden;border-top:1px solid #a95f10;border-bottom:1px solid #a95f10}
+  .ticker .run{display:flex;gap:0;width:max-content;animation:run 34s linear infinite}
+  .ticker span{padding:13px 26px;font-size:11.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;white-space:nowrap}
+  .ticker span::after{content:"◆";margin-left:26px;font-size:8px;opacity:.55}
+  @keyframes run{to{transform:translateX(-50%)}}
+  .ticker:hover .run{animation-play-state:paused}
+
+  /* ---------- sections ---------- */
+  section{padding:92px 0}
+  .sec-head{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:end;margin-bottom:46px}
+  .sec-head h2{font-size:clamp(30px,3.5vw,45px)}
+  .sec-head p{margin:14px 0 0;color:var(--muted);font-size:15.5px;max-width:520px}
+  .sec-head .aside{font-size:13px;color:var(--muted);border-left:2px solid var(--amber);padding-left:18px}
+  .light{background:var(--concrete)}
+  .dark{background:var(--graphite);color:#fff}
+  .dark .sec-head p,.dark .sec-head .aside{color:#a9b7bd}
+
+  /* ---------- métiers ---------- */
+  .jobs{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .job{background:var(--paper);padding:30px 26px 28px;position:relative;transition:.3s;overflow:hidden}
+  .job::before{content:"";position:absolute;left:0;top:0;height:3px;width:0;background:var(--amber);transition:width .35s}
+  .job:hover{background:#fff;box-shadow:var(--sh);z-index:2}
+  .job:hover::before{width:100%}
+  .job .ico{width:52px;height:52px;border:1px solid var(--line2);display:grid;place-items:center;color:var(--amber);margin-bottom:20px;transition:.3s}
+  .job:hover .ico{background:var(--amber);color:#fff;border-color:var(--amber)}
+  .job .ico svg{width:26px;height:26px}
+  .job h3{font-size:19px;letter-spacing:-.02em}
+  .job p{font-size:14px;color:var(--muted);margin:11px 0 14px}
+  .job ul{margin:0;padding:0;list-style:none;font-size:12.5px;color:#42515a}
+  .job li{padding:5px 0 5px 18px;position:relative;border-top:1px dashed #e2ddd2}
+  .job li:first-child{border-top:0}
+  .job li::before{content:"";position:absolute;left:0;top:13px;width:8px;height:1px;background:var(--amber)}
+  .job .num{position:absolute;right:20px;top:22px;font-size:11px;font-weight:800;color:#cfc8ba;letter-spacing:.1em}
+
+  /* ---------- réalisations ---------- */
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+  .chip{border:1px solid var(--line2);background:#fff;color:#42515a;padding:9px 16px;font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;transition:.2s}
+  .chip:hover{border-color:var(--amber);color:var(--amber)}
+  .chip.on{background:var(--graphite);border-color:var(--graphite);color:#fff}
+  .chip b{margin-left:6px;color:#8d9ba2;font-weight:600}
+  .chip.on b{color:var(--amber3)}
+  .grid-r{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{background:#fff;border:1px solid var(--line);overflow:hidden;cursor:pointer;text-align:left;padding:0;font:inherit;color:inherit;display:flex;flex-direction:column;transition:.35s}
+  .card:hover{transform:translateY(-5px);box-shadow:0 26px 46px rgba(13,19,22,.16);border-color:var(--line2)}
+  .card .ph{position:relative;aspect-ratio:4/3;overflow:hidden;background:#d8d3c8}
+  .card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+  .card:hover .ph img{transform:scale(1.06)}
+  .card .cat{position:absolute;left:12px;top:12px;background:rgba(13,19,22,.85);color:#f4ece0;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;padding:6px 10px}
+  .card .yr{position:absolute;right:12px;top:12px;background:rgba(255,255,255,.92);color:#33414a;font-size:10.5px;font-weight:700;padding:5px 9px;letter-spacing:.06em}
+  .card .cb{padding:18px 19px 20px;display:flex;flex-direction:column;flex:1}
+  .card h3{font-size:17.5px;letter-spacing:-.02em}
+  .card .loc{font-size:12.5px;color:var(--muted);margin:7px 0 14px}
+  .card .kv{display:flex;gap:16px;margin-top:auto;padding-top:13px;border-top:1px solid #eee9df;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:#6b7780}
+  .card .kv b{display:block;font-size:14px;letter-spacing:-.01em;text-transform:none;color:var(--ink)}
+  .card .more{position:absolute;right:14px;bottom:14px;width:34px;height:34px;background:var(--amber);color:#fff;display:grid;place-items:center;font-size:16px;opacity:0;transform:translateY(6px);transition:.3s}
+  .card:hover .more{opacity:1;transform:none}
+  .hidden{display:none!important}
+  .empty{border:1px dashed var(--line2);padding:34px;text-align:center;color:var(--muted);font-size:14px;background:#fff}
+
+  /* ---------- méthode ---------- */
+  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative}
+  .steps::before{content:"";position:absolute;left:0;right:0;top:29px;height:1px;background:#31424a}
+  .steps::after{content:"";position:absolute;left:0;top:29px;height:1px;width:var(--fill,0);background:var(--amber2);transition:width 1.4s ease}
+  .step{padding:0 20px 0 0;position:relative}
+  .step .dot{width:58px;height:58px;border:1px solid #3c4e57;background:var(--graphite);display:grid;place-items:center;font-size:16px;font-weight:800;color:var(--amber2);position:relative;z-index:1;transition:.4s}
+  .step.in .dot{background:var(--amber);color:#1a1005;border-color:var(--amber)}
+  .step h3{font-size:16.5px;margin:22px 0 8px;color:#fff}
+  .step p{font-size:13.5px;color:#9fadb4;margin:0}
+  .step .dur{display:inline-block;margin-top:14px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber3);border:1px solid #43555e;padding:5px 10px}
+
+  /* ---------- estimateur ---------- */
+  .calc{display:grid;grid-template-columns:1.05fr .95fr;gap:0;background:#fff;border:1px solid var(--line);box-shadow:var(--sh)}
+  .calc .form{padding:34px 34px 30px}
+  .calc .out{background:var(--graphite);color:#fff;padding:34px;position:relative;overflow:hidden}
+  .calc .out::after{content:"";position:absolute;inset:0;background:radial-gradient(520px 300px at 92% 4%,rgba(201,118,26,.3),transparent 60%);pointer-events:none}
+  .fgrp{margin-bottom:22px}
+  .flbl{display:flex;justify-content:space-between;align-items:baseline;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#69767e;margin-bottom:10px}
+  .flbl b{font-size:14px;letter-spacing:-.01em;color:var(--amber)}
+  .segs{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+  .seg{position:relative}
+  .seg input{position:absolute;opacity:0;pointer-events:none}
+  .seg label{display:block;border:1px solid var(--line2);padding:12px 13px;font-size:13px;cursor:pointer;transition:.2s;background:#fff}
+  .seg label small{display:block;font-size:11px;color:var(--muted);margin-top:3px}
+  .seg input:checked+label{border-color:var(--amber);background:var(--amber-soft);box-shadow:inset 3px 0 0 var(--amber)}
+  .seg label:hover{border-color:var(--amber2)}
+  input[type=range]{width:100%;accent-color:var(--amber);height:26px}
+  .scale{display:flex;justify-content:space-between;font-size:10.5px;color:#8b959b;margin-top:-2px}
+  .opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .opt{display:flex;align-items:center;gap:9px;border:1px solid var(--line2);padding:11px 12px;font-size:12.5px;cursor:pointer;background:#fff;transition:.2s}
+  .opt:hover{border-color:var(--amber2)}
+  .opt input{accent-color:var(--amber);width:16px;height:16px}
+  .opt span{margin-left:auto;font-size:11px;color:var(--muted)}
+  .out h3{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber3);margin-bottom:16px}
+  #amount{font-size:clamp(26px,3.4vw,40px);font-weight:800;letter-spacing:-.03em;line-height:1.05}
+  #amount small{display:block;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#93a3ab;margin-top:10px}
+  .rows{margin:24px 0 0;border-top:1px solid #2c3b43}
+  .rows div{display:flex;justify-content:space-between;gap:14px;padding:10px 0;border-bottom:1px dashed #263339;font-size:12.5px;color:#a9b7bd}
+  .rows div b{color:#fff;font-weight:600;font-size:13px;white-space:nowrap}
+  .note{font-size:11.5px;color:#8d9ba2;line-height:1.6;margin-top:20px}
+  .note b{color:var(--amber3)}
+
+  /* ---------- engagements ---------- */
+  .eng{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .eng article{background:#fff;border:1px solid var(--line);padding:26px 24px;position:relative;transition:.3s}
+  .eng article:hover{transform:translateY(-4px);box-shadow:var(--sh);border-color:var(--line2)}
+  .eng svg{width:26px;height:26px;color:var(--amber);margin-bottom:16px}
+  .eng h3{font-size:16.5px;margin-bottom:8px}
+  .eng p{font-size:13.5px;color:var(--muted);margin:0}
+  .eng .tick{position:absolute;right:20px;top:22px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#b6ad9d}
+
+  /* ---------- avis ---------- */
+  .say{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .say blockquote{margin:0;background:#fff;border:1px solid var(--line);border-top:3px solid var(--amber);padding:26px 24px;font-size:14.5px;line-height:1.7}
+  .say footer{margin-top:16px;font-size:12px;color:var(--muted);font-style:normal}
+  .say footer b{display:block;color:var(--ink);font-size:13.5px;font-style:normal}
+  .stars{color:var(--amber2);letter-spacing:2px;font-size:13px}
+
+  /* ---------- zone ---------- */
+  .zone{display:grid;grid-template-columns:.95fr 1.05fr;gap:52px;align-items:start}
+  .map{position:relative;background:var(--steel);border:1px solid #2c3b43;padding:26px;overflow:hidden}
+  .map svg{width:100%;height:auto;display:block}
+  .communes{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+  .communes span{border:1px solid #3b4c55;color:#cdd8dc;font-size:12px;padding:7px 12px;transition:.2s;cursor:default}
+  .communes span:hover{border-color:var(--amber2);color:#fff;background:rgba(201,118,26,.14)}
+  .communes span.core{border-color:var(--amber);color:var(--amber3)}
+
+  /* ---------- FAQ ---------- */
+  .faq{max-width:900px;margin:0 auto;border-top:1px solid var(--line2)}
+  .qa{border-bottom:1px solid var(--line2)}
+  .qa button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;background:none;border:0;padding:22px 4px;font-size:17px;font-weight:700;letter-spacing:-.01em;color:var(--ink);cursor:pointer;text-align:left}
+  .qa button:hover{color:var(--amber)}
+  .qa .pm{flex:none;width:28px;height:28px;border:1px solid var(--line2);display:grid;place-items:center;font-size:16px;transition:.3s}
+  .qa.open .pm{background:var(--amber);border-color:var(--amber);color:#fff;transform:rotate(45deg)}
+  .qa .ans{max-height:0;overflow:hidden;transition:max-height .35s ease}
+  .qa .ans p{margin:0 0 22px;font-size:14.5px;color:#46545c;max-width:820px;padding-right:40px}
+
+  /* ---------- contact ---------- */
+  .contact{display:grid;grid-template-columns:1.05fr .95fr;gap:0;background:#fff;border:1px solid var(--line);box-shadow:var(--sh)}
+  .cform{padding:36px}
+  .cinfo{background:var(--graphite);color:#fff;padding:36px;position:relative;overflow:hidden}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#69767e;margin-bottom:7px}
+  .field input,.field select,.field textarea{width:100%;border:1px solid var(--line2);background:var(--paper);padding:13px 14px;font-size:14.5px;font-family:inherit;color:var(--ink);outline:none;transition:.2s;border-radius:0}
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--amber);background:#fff;box-shadow:0 0 0 3px rgba(201,118,26,.13)}
+  .field textarea{min-height:104px;resize:vertical}
+  .field.bad input,.field.bad select,.field.bad textarea{border-color:var(--bad);background:#fdf5f2}
+  .err{display:none;font-size:11.5px;color:var(--bad);margin-top:6px}
+  .field.bad .err{display:block}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .ok-box{display:none;border:1px solid var(--ok);background:#f2fbf7;padding:22px;font-size:14px;color:#0b4a37}
+  .ok-box.show{display:block}
+  .ok-box h4{font-size:16px;margin-bottom:8px;color:#0e7a5b}
+  .ok-box a{color:#0e7a5b;border-bottom:1px solid rgba(14,122,91,.4)}
+  .cinfo h3{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber3);margin-bottom:20px}
+  .line-item{display:flex;gap:14px;padding:15px 0;border-bottom:1px dashed #2a383f;font-size:14px}
+  .line-item svg{width:18px;height:18px;color:var(--amber2);flex:none;margin-top:3px}
+  .line-item b{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8d9ba2;margin-bottom:3px;font-weight:700}
+  .line-item a{border-bottom:1px solid rgba(255,255,255,.2)}
+  .line-item a:hover{border-color:var(--amber2)}
+  .copy{margin-left:auto;background:none;border:1px solid #3b4c55;color:#cdd8dc;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:5px 9px;cursor:pointer;transition:.2s;align-self:center}
+  .copy:hover{border-color:var(--amber2);color:#fff}
+  .copy.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+  .hours{margin-top:26px;font-size:12.5px;color:#a9b7bd}
+
+  /* ---------- notes de maquette ---------- */
+  .proof{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .proof article{background:#fff;border:1px solid var(--line);padding:26px}
+  .proof article.real{border-left:3px solid var(--ok)}
+  .proof article.fake{border-left:3px solid var(--amber)}
+  .proof h3{font-size:16px;margin-bottom:14px}
+  .proof ul{margin:0;padding-left:18px;font-size:13.5px;color:#4a575e;line-height:1.75}
+  .proof li b{color:var(--ink)}
+
+  /* ---------- footer ---------- */
+  footer.site{background:#080d0f;color:#8d9ba2;font-size:12.5px;padding:56px 0 30px}
+  .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.1fr;gap:34px;padding-bottom:34px;border-bottom:1px solid #1e2a30}
+  footer.site h4{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#fff;margin-bottom:16px}
+  footer.site a:hover{color:var(--amber2)}
+  footer.site ul{list-style:none;margin:0;padding:0;line-height:2}
+  .fbot{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;padding-top:22px;font-size:11.5px}
+  .top{border:1px solid #2a383f;background:none;color:#cdd8dc;padding:9px 14px;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+  .top:hover{border-color:var(--amber2);color:#fff}
+
+  /* ---------- barre mobile + divers ---------- */
+  #mbar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:58;background:var(--graphite);border-top:1px solid #2b3a42}
+  #mbar a{flex:1;text-align:center;padding:14px 6px;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff}
+  #mbar a+a{background:var(--amber);color:#160d03}
+  #toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,14px);background:#0d1316;color:#fff;border:1px solid #33444c;padding:12px 20px;font-size:13px;z-index:90;opacity:0;pointer-events:none;transition:.25s;max-width:88vw;text-align:center}
+  #toast.show{opacity:1;transform:translate(-50%,0)}
+  #modal{position:fixed;inset:0;z-index:80;display:none;align-items:center;justify-content:center;padding:22px}
+  #modal.on{display:flex}
+  #modal .veil{position:absolute;inset:0;background:rgba(6,10,12,.78);backdrop-filter:blur(3px)}
+  #modal .box{position:relative;background:#fff;max-width:900px;width:100%;max-height:88vh;overflow:auto;border:1px solid var(--line2)}
+  #modal img{width:100%;height:320px;object-fit:cover}
+  #modal .in{padding:26px 28px 30px}
+  #modal h3{font-size:24px;margin-bottom:6px}
+  #modal .sub{color:var(--muted);font-size:13.5px;margin-bottom:20px}
+  #modal table{width:100%;border-collapse:collapse;font-size:13.5px}
+  #modal td{padding:9px 0;border-bottom:1px dashed #e4dfd5}
+  #modal td:last-child{text-align:right;font-weight:600;white-space:nowrap}
+  #modal .close{position:absolute;right:12px;top:12px;width:38px;height:38px;background:rgba(13,19,22,.85);color:#fff;border:1px solid #3b4c55;font-size:18px;cursor:pointer}
+  #modal .close:hover{background:var(--amber);border-color:var(--amber)}
+  #modal .tagx{display:inline-block;background:var(--amber-soft);border:1px solid #f0d9b4;color:#8a5a12;font-size:11px;letter-spacing:.06em;padding:5px 10px;margin-bottom:18px}
+
+  .rv{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+  .rv.in{opacity:1;transform:none}
+
+  @media(max-width:1040px){
+    .hero .wrap{grid-template-columns:1fr;gap:44px;padding-top:52px;padding-bottom:56px}
+    .shot img{height:400px}
+    .jobs,.eng,.say{grid-template-columns:repeat(2,1fr)}
+    .grid-r{grid-template-columns:repeat(2,1fr)}
+    .steps{grid-template-columns:repeat(2,1fr);gap:34px 0}
+    .steps::before,.steps::after{display:none}
+    .calc,.contact,.zone,.proof{grid-template-columns:1fr}
+    nav.main{display:none}
+    .burger{display:block}
+    .call{display:none}
+    .sec-head{grid-template-columns:1fr;gap:18px}
+  }
+  @media(max-width:640px){
+    section{padding:64px 0}
+    .dmore{display:none}
+    .wrap{padding:0 18px}
+    .jobs,.eng,.say,.grid-r,.steps{grid-template-columns:1fr}
+    .two,.opts,.segs{grid-template-columns:1fr}
+    .shot img{height:290px}
+    .shot::before,.shot::after{width:34px;height:34px}
+    .hero .facts{gap:20px}
+    .calc .form,.calc .out,.cform,.cinfo{padding:24px 20px}
+    #mbar{display:flex}
+    footer.site{padding-bottom:84px}
+    .fgrid{grid-template-columns:1fr 1fr;gap:26px}
+    .btn{width:100%}
+    .card .kv{flex-wrap:wrap;gap:12px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important}
+    .rv{opacity:1;transform:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<div class="demo">Maquette de démonstration — site non officiel<span class="dmore">, <b>contenus et visuels d'exemple</b></span>. <a href="index.html">Voir toutes les démos</a></div>
+<div id="prog"></div>
+
+<header id="hdr">
+  <div class="wrap bar">
+    <a class="brand" href="#accueil">
+      <span class="mark">SIM</span>
+      <span class="txt"><b>SIM Construction &amp; Architecture</b><span>BTP · Études · Travaux — Abidjan</span></span>
+    </a>
+    <nav class="main" id="nav">
+      <a href="#metiers">Métiers</a>
+      <a href="#realisations">Réalisations</a>
+      <a href="#methode">Méthode</a>
+      <a href="#devis">Estimer</a>
+      <a href="#zone">Zone</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="call" href="tel:+2252720373737">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+      +225 27 20 37 37 37
+    </a>
+    <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false"><i></i><i></i><i></i></button>
+  </div>
+  <div id="mnav">
+    <a href="#metiers">Métiers</a>
+    <a href="#realisations">Réalisations</a>
+    <a href="#methode">Méthode de travail</a>
+    <a href="#devis">Estimer mon projet</a>
+    <a href="#zone">Zone d'intervention</a>
+    <a href="#faq">Questions fréquentes</a>
+    <a href="#contact">Contact &amp; devis</a>
+  </div>
+</header>
+
+<main>
+<!-- ================= HERO ================= -->
+<section class="hero blueprint" id="accueil" style="padding:0">
+  <div class="wrap">
+    <div>
+      <div class="kicker">Cocody · Djorogobité — Abidjan</div>
+      <h1>Bâtir droit,<br>chiffrer clair,<br><em>livrer à temps.</em></h1>
+      <p class="lead">Construction de bâtiments, rénovation, plans architecturaux et modélisation 3D. Une seule équipe de l'étude à la remise des clés — avec un devis poste par poste avant le premier coup de pelle.</p>
+      <div class="cta">
+        <a class="btn amber" href="#devis">Estimer mon projet
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn line" href="#realisations">Voir nos chantiers</a>
+      </div>
+      <div class="facts">
+        <div><b>72 h</b><span>devis détaillé</span></div>
+        <div><b>6</b><span>métiers couverts</span></div>
+        <div><b>5</b><span>étapes suivies</span></div>
+        <div><b>17</b><span>communes desservies</span></div>
+      </div>
+    </div>
+    <div class="shot">
+      <img src="assets/sim-hero.jpg" alt="Villa contemporaine achevée à Abidjan au coucher du soleil">
+      <span class="badge">Visuel d'exemple</span>
+      <div class="cap">Livraison d'une villa R+2 avec piscine — Cocody</div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="run">
+    <span>Gros œuvre</span><span>Second œuvre</span><span>Rénovation</span><span>Plans architecturaux</span><span>Modélisation 3D</span><span>Études techniques</span><span>VRD &amp; viabilisation</span><span>Suivi de chantier</span>
+    <span>Gros œuvre</span><span>Second œuvre</span><span>Rénovation</span><span>Plans architecturaux</span><span>Modélisation 3D</span><span>Études techniques</span><span>VRD &amp; viabilisation</span><span>Suivi de chantier</span>
+  </div>
+</div>
+
+<!-- ================= MÉTIERS ================= -->
+<section id="metiers">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <div class="kicker" style="color:var(--amber)">01 · Nos métiers</div>
+        <h2>Un chantier, un interlocuteur,<br>un document de référence.</h2>
+      </div>
+      <p class="aside">Chaque prestation est chiffrée par lot dans le même document : le devis. C'est lui qui devient le planning, puis la facture. Pas de surprise à 80 % d'avancement.</p>
+    </div>
+
+    <div class="jobs">
+      <article class="job rv" data-job="neuf">
+        <span class="num">01</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6M9 12h6"/></svg></div>
+        <h3>Gros œuvre &amp; maçonnerie</h3>
+        <p>Fondations, élévation, chaînages, dalles et toitures. Béton dosé et coulé selon les règles de l'art, éprouvé à chaque étape.</p>
+        <ul><li>Implantation &amp; fouilles</li><li>Semelles, poteaux, poutres</li><li>Dalles béton &amp; escaliers</li><li>Élévation &amp; enduits grossiers</li></ul>
+      </article>
+
+      <article class="job rv" data-job="renovation">
+        <span class="num">02</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9h18v11H3zM3 9l9-6 9 6M8 20v-6h4v6"/></svg></div>
+        <h3>Second œuvre &amp; finitions</h3>
+        <p>Plomberie, électricité, carrelage, menuiserie, peinture. Le lot qui se voit — et celui qui coûte le plus cher en reprises si l'on bâcle.</p>
+        <ul><li>Électricité &amp; mise aux normes</li><li>Plomberie, sanitaires, eau chaude</li><li>Carrelage, faux plafonds, cloisons</li><li>Menuiserie bois &amp; aluminium</li></ul>
+      </article>
+
+      <article class="job rv" data-job="renovation">
+        <span class="num">03</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v5h-5"/></svg></div>
+        <h3>Rénovation &amp; réhabilitation</h3>
+        <p>Redonner de la valeur à un bâti existant : structure, étanchéité, usage. On ouvre, on sonde, on chiffre avant de refermer.</p>
+        <ul><li>Diagnostic &amp; sondages</li><li>Reprise de structure, dalots</li><li>Étanchéité toiture &amp; terrasses</li><li>Mise à neuf complète</li></ul>
+      </article>
+
+      <article class="job rv" data-job="plans">
+        <span class="num">04</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5ZM3 7l9 5 9-5M12 12v10"/></svg></div>
+        <h3>Plans architecturaux &amp; 3D</h3>
+        <p>Vous validez les volumes avant de payer le premier sac de ciment. Plans cotés, coupes, vues 3D réalistes, choix des matériaux.</p>
+        <ul><li>Plan de masse &amp; niveaux</li><li>Coupes &amp; façades</li><li>Maquette 3D &amp; images réalistes</li><li>Dossier d'autorisation</li></ul>
+      </article>
+
+      <article class="job rv" data-job="etudes">
+        <span class="num">05</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 3h13l3 3v15H4zM8 8h8M8 12h8M8 16h5"/></svg></div>
+        <h3>Études techniques &amp; devis</h3>
+        <p>Notes de calcul, métrés quantitatifs, estimation fiable. Le document qui permet de comparer deux entreprises sérieusement.</p>
+        <ul><li>Étude de structure</li><li>Métré &amp; quantitatif par lot</li><li>Estimation budgétaire</li><li>Planning &amp; chemin critique</li></ul>
+      </article>
+
+      <article class="job rv" data-job="vr">
+        <span class="num">06</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 21 9 3h6l5 18M12 8v2M12 13v2M12 18v1"/></svg></div>
+        <h3>VRD &amp; aménagements extérieurs</h3>
+        <p>Le terrain d'abord : assainissement, voirie, clôture, drainage. Un chantier bien démarré est un chantier à moitié fini.</p>
+        <ul><li>Terrassement &amp; nivellement</li><li>Regard, fossé, évacuation eaux</li><li>Murs de clôture &amp; portail</li><li>Dallage, allées, piscine</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RÉALISATIONS ================= -->
+<section class="light" id="realisations">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <div class="kicker" style="color:var(--amber)">02 · Réalisations</div>
+        <h2>Ce que nous livrons,<br>lot par lot.</h2>
+        <p>Cinq chantiers types, du terrain nu à la remise des clés. Cliquez sur une fiche pour voir le détail des postes et les délais réels.</p>
+      </div>
+      <div class="chips" id="chips" style="margin:0">
+        <button class="chip on" data-f="all" type="button">Tous <b>5</b></button>
+        <button class="chip" data-f="residentiel" type="button">Résidentiel <b>2</b></button>
+        <button class="chip" data-f="tertiaire" type="button">Tertiaire <b>1</b></button>
+        <button class="chip" data-f="renovation" type="button">Rénovation <b>1</b></button>
+        <button class="chip" data-f="vr" type="button">Viabilisation <b>1</b></button>
+      </div>
+    </div>
+
+    <div class="grid-r" id="real"></div>
+    <p class="note" style="color:var(--muted);margin-top:22px;font-size:12.5px"><b style="color:var(--amber)">À savoir :</b> visuels et fiches de cette section sont des exemples de présentation, à remplacer par vos propres photos de chantier et vos vrais métrés avant mise en ligne.</p>
+  </div>
+</section>
+
+<!-- ================= MÉTHODE ================= -->
+<section class="dark blueprint" id="methode" style="padding-bottom:104px">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <div class="kicker">03 · Méthode</div>
+        <h2>Cinq étapes, zéro angle mort.</h2>
+        <p>Un chantier rate rarement par manque de bras. Il rate faute de tracabilité : qui a validé quoi, quand, à quel prix.</p>
+      </div>
+      <p class="aside">Vous recevez un compte rendu photo chaque semaine et une situation de travaux à chaque étape payante. Rien n'est facturé s'il n'est pas avancé et validé.</p>
+    </div>
+    <div class="steps" id="steps">
+      <div class="step rv"><div class="dot">01</div><h3>Visite &amp; écoute</h3><p>Nous nous déplaçons sur le terrain, nous mesurons, nous photographions, nous posons les questions qui fâchent.</p><span class="dur">24 – 48 h</span></div>
+      <div class="step rv"><div class="dot">02</div><h3>Devis chiffré</h3><p>Quantitatif par lot, prix unitaires, total et options. Un document que vous pouvez faire comparer.</p><span class="dur">72 h</span></div>
+      <div class="step rv"><div class="dot">03</div><h3>Plans &amp; autorisations</h3><p>Plans d'exécution, maquette 3D, dossier d'urbanisme préparé avec vous.</p><span class="dur">1 – 3 semaines</span></div>
+      <div class="step rv"><div class="dot">04</div><h3>Exécution &amp; suivi</h3><p>Planning affiché, chef de chantier identifié, compte rendu photo hebdomadaire.</p><span class="dur">Selon métré</span></div>
+      <div class="step rv"><div class="dot">05</div><h3>Réception</h3><p>PV de réception, levée des réserves, dossier des ouvrages exécutés remis.</p><span class="dur">+ réserves 15 j</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ESTIMATEUR ================= -->
+<section id="devis">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <div class="kicker" style="color:var(--amber)">04 · Estimation</div>
+        <h2>Combien coûte votre projet ?</h2>
+        <p>Quatre paramètres, une fourchette immédiate. Le chiffrage définitif exige une visite — celui-ci vous évite d'appeler à l'aveugle.</p>
+      </div>
+      <p class="aside">Grilles de prix au m² observées sur des chantiers abidjanais de 2025-2026, hors terrain et hors aléas. Elles servent à cadrer un budget, pas à l'engager.</p>
+    </div>
+
+    <div class="calc rv">
+      <div class="form">
+        <div class="fgrp">
+          <div class="flbl"><span>Type de projet</span></div>
+          <div class="segs" id="types">
+            <div class="seg"><input type="radio" name="t" id="t-neuf" value="neuf" checked><label for="t-neuf">Construction neuve<small>Villa, immeuble, maison R+1</small></label></div>
+            <div class="seg"><input type="radio" name="t" id="t-renov" value="renovation"><label for="t-renov">Rénovation<small>Réhabilitation, mise à neuf</small></label></div>
+            <div class="seg"><input type="radio" name="t" id="t-tert" value="tertiaire"><label for="t-tert">Tertiaire<small>Bureau, commerce, clinique</small></label></div>
+            <div class="seg"><input type="radio" name="t" id="t-vr" value="vr"><label for="t-vr">VRD &amp; extérieurs<small>Clôture, dallage, assainissement</small></label></div>
+          </div>
+        </div>
+
+        <div class="fgrp">
+          <div class="flbl"><span>Surface à traiter</span><b id="surfLbl">150 m²</b></div>
+          <input type="range" id="surf" min="20" max="800" step="10" value="150" aria-label="Surface en mètres carrés">
+          <div class="scale"><span>20 m²</span><span>400 m²</span><span>800 m²</span></div>
+        </div>
+
+        <div class="fgrp">
+          <div class="flbl"><span>Niveau de prestation</span></div>
+          <div class="segs" style="grid-template-columns:repeat(3,1fr)" id="gammes">
+            <div class="seg"><input type="radio" name="g" id="g1" value="0"><label for="g1">Essentielle<small>Matériaux courants</small></label></div>
+            <div class="seg"><input type="radio" name="g" id="g2" value="1" checked><label for="g2">Confort<small>Bon rapport durée/prix</small></label></div>
+            <div class="seg"><input type="radio" name="g" id="g3" value="2"><label for="g3">Haut de gamme<small>Finitions sur mesure</small></label></div>
+          </div>
+        </div>
+
+        <div class="fgrp" style="margin-bottom:0">
+          <div class="flbl"><span>Options du contrat</span></div>
+          <div class="opts" id="opts">
+            <label class="opt"><input type="checkbox" name="opts" value="0.04" data-l="Plans &amp; maquette 3D"> Plans &amp; 3D <span>+4 %</span></label>
+            <label class="opt"><input type="checkbox" name="opts" value="0.06" data-l="Suivi de chantier hebdomadaire"> Suivi hebdo <span>+6 %</span></label>
+            <label class="opt"><input type="checkbox" name="opts" value="0.08" data-l="VRD, clôture et aménagements"> VRD &amp; clôture <span>+8 %</span></label>
+            <label class="opt"><input type="checkbox" name="opts" value="0.1" data-l="Aménagement intérieur complet"> Aménagement intérieur <span>+10 %</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="out blueprint">
+        <h3>Fourchette indicative</h3>
+        <div id="amount">—<small>sélectionnez vos paramètres</small></div>
+        <div class="rows">
+          <div><span>Prix de référence</span><b id="rUnit">—</b></div>
+          <div><span>Base de calcul</span><b id="rBase">—</b></div>
+          <div><span>Options retenues</span><b id="rOpts">Aucune</b></div>
+          <div><span>Durée de chantier estimée</span><b id="rDur">—</b></div>
+        </div>
+        <p class="note">Estimation <b>indicative</b>, hors acquisition du terrain, hors autorisations et hors aléas de sol. Elle ne remplace pas le devis détaillé établi après visite.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;position:relative;z-index:2">
+          <button class="btn amber" id="toForm" type="button">Transmettre au devis</button>
+          <button class="btn line" id="calcReset" type="button">Réinitialiser</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ENGAGEMENTS ================= -->
+<section class="light" id="engagements">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <div class="kicker" style="color:var(--amber)">05 · Engagements</div>
+        <h2>Six promesses<br>que l'on peut vérifier.</h2>
+      </div>
+      <p class="aside">Pas de slogan : six points concrets, inscrits au contrat et contrôlables par vous, chantier par chantier.</p>
+    </div>
+    <div class="eng">
+      <article class="rv"><span class="tick">01</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/></svg><h3>Devis sous 72 h</h3><p>Après visite, vous recevez un quantitatif par lot avec prix unitaires — pas un prix global « à la louche ».</p></article>
+      <article class="rv"><span class="tick">02</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="16"/><path d="M8 3v4M16 3v4M3 11h18M8 15h3"/></svg><h3>Planning affiché</h3><p>Le planning est daté, tenu au chantier et mis à jour. Tout retard est annoncé, jamais constaté.</p></article>
+      <article class="rv"><span class="tick">03</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h4l2-3h6l2 3h4v13H3z"/><circle cx="12" cy="14" r="3.6"/></svg><h3>Photo chaque semaine</h3><p>Un compte rendu photo daté par courriel ou WhatsApp. Vous suivez l'avancement sans venir à pied d'œuvre.</p></article>
+      <article class="rv"><span class="tick">04</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3 4 6v6c0 5 3.4 8.2 8 9 4.6-.8 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg><h3>Paiement à l'avancement</h3><p>Situations validées avant règlement. Aucune avance de 100 %, aucun solde exigé avant réception.</p></article>
+      <article class="rv"><span class="tick">05</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 3h11l3 3v15H5zM9 8h7M9 12h7M9 16h4"/></svg><h3>Dossier remis en fin</h3><p>Plans de récolement, PV de réception, notices d'entretien et contacts des fournisseurs réunis dans un dossier.</p></article>
+      <article class="rv"><span class="tick">06</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20v-2a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v2"/><circle cx="12" cy="7" r="4"/></svg><h3>Chantier sûr et propre</h3><p>Casque, harnais, zone balisée, évacuation des gravats. Le voisinage ne doit jamais subir le chantier.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= AVIS ================= -->
+<section id="avis">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <div class="kicker" style="color:var(--amber)">06 · Retours clients</div>
+        <h2>Ce qu'on dit<br>de nos chantiers.</h2>
+      </div>
+      <p class="aside">Votre fiche Google est le premier endroit où l'on vous cherche. Demander un avis à la livraison est aussi important que bien poser le carrelage.</p>
+    </div>
+    <div class="say">
+      <blockquote class="rv"><div class="stars">★★★★★</div><p style="font-size:14.5px;margin:12px 0 0">« Le devis est arrivé trois jours après la visite, avec les quantités par lot. J'ai pu comparer avec deux autres entreprises : c'est celui qui était le plus transparent qui a eu le marché. »</p><footer><b>Client — villa R+2, Bingerville</b>Chantier livré avec PV de réception</footer></blockquote>
+      <blockquote class="rv"><div class="stars">★★★★★</div><p style="font-size:14.5px;margin:12px 0 0">« Je vis à l'étranger et je suivais l'avancement par les photos du vendredi. Zéro déplacement, zéro mauvaise surprise sur la facture finale. »</p><footer><b>Client — rénovation d'appartement, Cocody</b>Réhabilitation complète, 4 mois</footer></blockquote>
+      <blockquote class="rv"><div class="stars">★★★★☆</div><p style="font-size:14.5px;margin:12px 0 0">« Les délais ont glissé de deux semaines à cause des pluies, mais ça a été annoncé le jour même, avec un planning recalculé. C'est ce que je retiens. »</p><footer><b>Client — local commercial, Marcory</b>Second œuvre &amp; aménagement</footer></blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ZONE ================= -->
+<section class="dark blueprint" id="zone">
+  <div class="wrap">
+    <div class="zone">
+      <div class="rv">
+        <div class="kicker">07 · Zone d'intervention</div>
+        <h2 style="font-size:clamp(28px,3.3vw,42px);margin-top:18px">Basés à Cocody,<br>nous intervenons sur tout Abidjan.</h2>
+        <p style="color:#a9b7bd;font-size:15px;margin-top:18px">Équipe et matériel positionnés à Djorogobité 1. Au-delà d'Abidjan, nous étudions les chantiers de l'intérieur du pays avec un forfait de déplacement chiffré au devis.</p>
+        <div class="communes">
+          <span class="core">Cocody</span><span class="core">Djorogobité</span><span class="core">Angré</span><span class="core">Riviera</span><span class="core">2 Plateaux</span>
+          <span>Plateau</span><span>Marcory</span><span>Zone 4</span><span>Treichville</span><span>Yopougon</span><span>Abobo</span><span>Bingerville</span><span>Adjamé</span><span>Anyama</span><span>Songon</span><span>Bassam</span><span>Dabou</span>
+        </div>
+        <div class="cta">
+          <a class="btn amber" href="#contact">Parler d'un chantier</a>
+          <a class="btn line" href="tel:+2252720373737">Appeler le standard</a>
+        </div>
+      </div>
+      <div class="map rv" aria-hidden="true">
+        <svg viewBox="0 0 420 330">
+          <defs>
+            <pattern id="hatch" width="8" height="8" patternTransform="rotate(38)" patternUnits="userSpaceOnUse">
+              <line x1="0" y1="0" x2="0" y2="8" stroke="#33454e" stroke-width="1.4"/>
+            </pattern>
+          </defs>
+          <path d="M20 250 L120 150 L215 175 L300 110 L400 140 L400 320 L20 320 Z" fill="url(#hatch)" opacity=".55"/>
+          <path d="M20 250 L120 150 L215 175 L300 110 L400 140" fill="none" stroke="#e79a2b" stroke-width="2"/>
+          <path d="M0 292 C90 268 150 300 230 282 C300 266 360 292 420 272 L420 330 L0 330 Z" fill="#12303a" opacity=".9"/>
+          <g stroke="#4b6069" stroke-width="1" fill="none">
+            <path d="M60 320 L140 190 M150 320 L215 190 M240 320 L300 130 M330 320 L360 150"/>
+          </g>
+          <g>
+            <circle cx="215" cy="175" r="7" fill="#e79a2b"/>
+            <circle cx="215" cy="175" r="15" fill="none" stroke="#e79a2b" stroke-width="1.4" opacity=".7"/>
+            <circle cx="215" cy="175" r="26" fill="none" stroke="#e79a2b" stroke-width="1" opacity=".35"/>
+            <text x="232" y="171" fill="#f6c27a" font-family="Segoe UI,Arial" font-size="12" font-weight="700">DJOROGOBITÉ 1</text>
+            <text x="232" y="186" fill="#8d9ba2" font-family="Segoe UI,Arial" font-size="10">Siège &amp; atelier</text>
+          </g>
+          <g fill="#9fb2ba" font-family="Segoe UI,Arial" font-size="10.5">
+            <text x="92" y="132">ABOBO</text><text x="300" y="96">ANYAMA</text><text x="48" y="212">YOPOUGON</text>
+            <text x="150" y="248">PLATEAU</text><text x="252" y="252">MARCORY</text><text x="336" y="238">BASSAM</text>
+            <text x="118" y="176">ADJAMÉ</text><text x="286" y="222">COGNIÉRÉ</text>
+          </g>
+          <g stroke="#5c7079" stroke-dasharray="4 4" fill="none" opacity=".8"><path d="M215 175 L150 240 M215 175 L300 250 M215 175 L120 140"/></g>
+          <text x="20" y="30" fill="#5f7079" font-family="Segoe UI,Arial" font-size="10" letter-spacing="2">SCHÉMA — NON CONTRACTUEL</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head rv" style="grid-template-columns:1fr;text-align:center;justify-items:center">
+      <div>
+        <div class="kicker" style="color:var(--amber);justify-content:center">08 · Questions fréquentes</div>
+        <h2>Ce que tout maître d'ouvrage demande avant de signer.</h2>
+      </div>
+    </div>
+    <div class="faq" id="faqlist">
+      <div class="qa"><button type="button">Quel budget prévoir au m² à Abidjan ?<span class="pm">+</span></button><div class="ans"><p>Entre 180 000 et 700 000 FCFA du m² selon la nature du projet et le niveau de finition. Une rénovation de second œuvre coûte nettement moins qu'une construction neuve, et le VRD se facture au linéaire ou au m² de voirie. L'estimateur de cette page vous donne une fourchette en dix secondes ; le devis détaillé, lui, suppose une visite.</p></div></div>
+      <div class="qa"><button type="button">Le devis est-il payant ?<span class="pm">+</span></button><div class="ans"><p>Non. La visite technique et le devis quantitatif sont gratuits à Abidjan. Nous ne facturons que les plans d'exécution et l'étude de structure, et uniquement si vous les commandez — un plan validé vous appartient, vous pouvez faire travailler n'importe qui avec.</p></div></div>
+      <div class="qa"><button type="button">Qui s'occupe des autorisations ?<span class="pm">+</span></button><div class="ans"><p>Nous préparons le dossier (plans, pièces, formulaires) et nous vous accompagnons dans le dépôt. La décision reste celle de l'administration : aucun entrepreneur sérieux ne peut promettre un arrêté à une date fixe. Nous inscrivons cette étape dans le planning, pas dans une promesse.</p></div></div>
+      <div class="qa"><button type="button">Comment se déroule le paiement ?<span class="pm">+</span></button><div class="ans"><p>Par tranches liées à l'avancement : une avance limitée au démarrage du gros œuvre, puis des situations validées avant règlement, et un solde à la réception avec levée des réserves. Aucun chantier ne démarre sur un « on réglera à la fin ».</p></div></div>
+      <div class="qa"><button type="button">Travaillez-vous hors d'Abidjan ?<span class="pm">+</span></button><div class="ans"><p>Oui, dans l'intérieur du pays, à partir d'un certain volume de travaux. Un forfait de déplacement, de logement et de gardiennage est alors chiffré dans le devis, de façon visible, pour que vous sachiez exactement ce que coûte l'éloignement.</p></div></div>
+      <div class="qa"><button type="button">Que se passe-t-il après la livraison ?<span class="pm">+</span></button><div class="ans"><p>Un PV de réception est signé, avec une liste de réserves et un délai de levée. Vous recevez le dossier des ouvrages exécutés : plans de récolement, notices, références des matériaux. Les garanties légales (parfait achèvement, solidité) sont celles du droit ivoirien et s'appliquent aux lots concernés ; les attestations d'assurance sont à demander avant le démarrage.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="light" id="contact">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <div class="kicker" style="color:var(--amber)">09 · Contact</div>
+        <h2>Envoyez votre projet,<br>on vous rappelle.</h2>
+        <p>Un numéro de téléphone suffit pour démarrer. Nous rappelons les jours ouvrés, en général dans la journée.</p>
+      </div>
+      <p class="aside">Vous préférez parler directement ? Le standard répond au <b>+225 27 20 37 37 37</b> et le service devis au <b>+225 07 07 93 73 17</b>.</p>
+    </div>
+
+    <div class="contact rv">
+      <div class="cform">
+        <form id="f" novalidate>
+          <div class="two">
+            <div class="field"><label for="nom">Votre nom *</label><input id="nom" name="nom" autocomplete="name" placeholder="Ex. Kouassi Marc"><span class="err">Indiquez au moins 2 caractères.</span></div>
+            <div class="field"><label for="tel">Téléphone *</label><input id="tel" name="tel" inputmode="tel" autocomplete="tel" placeholder="Ex. 07 00 00 00 00"><span class="err">Numéro ivoirien attendu (10 chiffres, ou 8 avec indicatif).</span></div>
+          </div>
+          <div class="two">
+            <div class="field"><label for="mail">E-mail (facultatif)</label><input id="mail" name="mail" type="email" autocomplete="email" placeholder="vous@exemple.ci"><span class="err">Cette adresse ne semble pas valide.</span></div>
+            <div class="field"><label for="commune">Commune du terrain *</label>
+              <select id="commune" name="commune">
+                <option value="">Choisir…</option>
+                <option>Cocody</option><option>Plateau</option><option>Marcory</option><option>Treichville</option><option>Adjamé</option><option>Yopougon</option><option>Abobo</option><option>Bingerville</option><option>2 Plateaux</option><option>Riviera</option><option>Angré</option><option>Grand-Bassam</option><option>Hors Abidjan</option>
+              </select><span class="err">Sélectionnez une commune.</span></div>
+          </div>
+          <div class="two">
+            <div class="field"><label for="type">Nature des travaux *</label>
+              <select id="type" name="type">
+                <option value="">Choisir…</option>
+                <option>Construction neuve</option><option>Rénovation / réhabilitation</option><option>Second œuvre &amp; finitions</option><option>Plans &amp; modélisation 3D</option><option>Étude technique / devis</option><option>VRD, clôture, extérieurs</option><option>Local commercial / tertiaire</option>
+              </select><span class="err">Sélectionnez une nature de travaux.</span></div>
+            <div class="field"><label for="surface">Surface approximative (m²)</label><input id="surface" name="surface" inputmode="numeric" placeholder="Ex. 150"></div>
+          </div>
+          <div class="field"><label for="msg">Votre projet en quelques lignes</label><textarea id="msg" name="msg" placeholder="Terrain déjà acquis ? Nombre de niveaux ? Délai souhaité ? Budget envisagé ?"></textarea></div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+            <button class="btn dark" type="submit">Demander un devis
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+            <a class="btn ghost" id="wa" href="#" target="_blank" rel="noopener">Écrire sur WhatsApp</a>
+          </div>
+          <p class="note" style="color:var(--muted);margin-top:16px">Formulaire de démonstration : il ne transmet rien à SIM Construction. À la validation, il prépare un message prérempli que vous pouvez envoyer par courriel ou WhatsApp.</p>
+        </form>
+        <div class="ok-box" id="ok">
+          <h4>Message prêt à envoyer.</h4>
+          <p id="okTxt" style="margin:0 0 14px"></p>
+          <a id="okMail" href="#">Envoyer par e-mail</a> · <a href="#" id="okWa">ou via WhatsApp</a> · <button class="btn ghost" id="again" type="button" style="margin-left:6px">Modifier</button>
+        </div>
+      </div>
+
+      <div class="cinfo blueprint">
+        <h3>Coordonnées</h3>
+        <div class="line-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg><div><b>Adresse</b>Cocody Djorogobité 1, près du groupe scolaire<br>Les Graines du Savoir — Abidjan</div></div>
+        <div class="line-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg><div><b>Standard</b><a href="tel:+2252720373737">+225 27 20 37 37 37</a></div><button class="copy" data-copy="+2252720373737" type="button">Copier</button></div>
+        <div class="line-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg><div><b>Devis &amp; WhatsApp</b><a href="tel:+2250707937317">+225 07 07 93 73 17</a></div><button class="copy" data-copy="+2250707937317" type="button">Copier</button></div>
+        <div class="line-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14"/><path d="m3 7 9 6 9-6"/></svg><div><b>E-mail</b><a href="mailto:simconstruction225@gmail.com">simconstruction225@gmail.com</a></div><button class="copy" data-copy="simconstruction225@gmail.com" type="button">Copier</button></div>
+        <div class="line-item" style="border-bottom:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg><div><b>Réseaux</b><a href="https://www.facebook.com/simconstructionsarl/" target="_blank" rel="noopener">Facebook · Sim Construction &amp; Architecture</a></div></div>
+        <div class="hours">Lundi – vendredi : 8 h 00 – 18 h 00<br>Samedi : 9 h 00 – 14 h 00 · Visite de chantier sur rendez-vous.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NOTES DE MAQUETTE ================= -->
+<section id="maquette" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head rv" style="grid-template-columns:1fr">
+      <div>
+        <div class="kicker" style="color:var(--amber)">Notes de maquette</div>
+        <h2 style="font-size:clamp(26px,3vw,36px)">Ce qui est réel, ce qui est à remplacer.</h2>
+      </div>
+    </div>
+    <div class="proof">
+      <article class="real rv">
+        <h3>Données publiques réelles</h3>
+        <ul>
+          <li><b>Raison sociale et signature de métier</b> : Sim Construction &amp; Architecture, telle que publiée sur la page Facebook de l'entreprise.</li>
+          <li><b>Prestations</b> : construction de bâtiments, plans architecturaux, modélisation 3D, rénovation, études techniques, travaux.</li>
+          <li><b>Adresse</b> : Cocody Djorogobité 1, près du groupe scolaire Les Graines du Savoir.</li>
+          <li><b>Téléphones</b> : +225 27 20 37 37 37 (fiche Google), +225 07 07 93 73 17 et +225 27 22 35 43 72 (page Facebook).</li>
+          <li><b>E-mail</b> : simconstruction225@gmail.com (page Facebook officielle).</li>
+        </ul>
+      </article>
+      <article class="fake rv">
+        <h3>Contenus d'exemple à remplacer</h3>
+        <ul>
+          <li><b>Photos et fiches de réalisations</b> : visuels génériques, aucun chantier réel de SIM.</li>
+          <li><b>Avis clients</b> : textes de démonstration, à remplacer par vos vrais retours (et par vos avis Google).</li>
+          <li><b>Grilles de prix de l'estimateur</b> : ordres de grandeur publics, à ajuster sur vos propres métrés.</li>
+          <li><b>Horaires, garanties, procédures</b> : modèles de bonne pratique, à valider par l'entreprise.</li>
+          <li><b>À ajouter</b> : NCC, attestation d'assurance, qualifications, logo officiel, photos d'équipe.</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <div class="brand" style="margin-bottom:16px"><span class="mark">SIM</span><span class="txt"><b style="color:#fff">SIM Construction &amp; Architecture</b><span>BTP · Études · Travaux</span></span></div>
+        <p style="margin:0;font-size:12.5px;line-height:1.7">Construction de bâtiments, rénovation, plans architecturaux et modélisation 3D à Abidjan. Siège : Cocody Djorogobité 1.</p>
+      </div>
+      <div>
+        <h4>Métiers</h4>
+        <ul><li><a href="#metiers">Gros œuvre</a></li><li><a href="#metiers">Second œuvre</a></li><li><a href="#metiers">Rénovation</a></li><li><a href="#metiers">Plans &amp; 3D</a></li><li><a href="#metiers">VRD</a></li></ul>
+      </div>
+      <div>
+        <h4>Le site</h4>
+        <ul><li><a href="#realisations">Réalisations</a></li><li><a href="#methode">Méthode</a></li><li><a href="#devis">Estimer</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li></ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+2252720373737">+225 27 20 37 37 37</a></li>
+          <li><a href="tel:+2250707937317">+225 07 07 93 73 17</a></li>
+          <li><a href="mailto:simconstruction225@gmail.com">simconstruction225@gmail.com</a></li>
+          <li><a href="https://www.facebook.com/simconstructionsarl/" target="_blank" rel="noopener">Facebook</a></li>
+        </ul>
+        <button class="top" id="toTop" type="button" style="margin-top:18px">↑ Haut de page</button>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>Maquette de démonstration réalisée pour proposition commerciale — site non officiel, entreprise non affiliée.</span>
+      <span>Abidjan · Octobre 2026 · <a href="index.html">Toutes les démos</a></span>
+    </div>
+  </div>
+</footer>
+
+<div id="mbar"><a href="tel:+2252720373737">Appeler</a><a href="#contact">Devis gratuit</a></div>
+<div id="toast" role="status" aria-live="polite"></div>
+<div id="modal" role="dialog" aria-modal="true" aria-label="Détail de la réalisation"><div class="veil"></div><div class="box"></div></div>
+
+<script>
+(function () {
+  'use strict';
+  var $ = function (s, c) { return (c || document).querySelector(s); };
+  var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+
+  /* ---------- données de démonstration ---------- */
+  var REA = [
+    { id: 'villa', cat: 'residentiel', img: 'assets/sim-hero.jpg', t: 'Villa contemporaine R+2', loc: 'Cocody, Angré', yr: '2025', s: '320 m²', d: '9 mois', b: '47 000 000', bm: '47 M',
+      txt: 'Commande d\'un particulier résidant à l\'étranger : maison familiale avec séjour traversant, 4 chambres, bureau et piscine. Structure poteaux-poutres, dalle pleine, toiture-terrasse partiellement végétalisée.',
+      postes: [['Terrassement & fondations', '4 900 000'], ['Gros œuvre & structure', '17 600 000'], ['Second œuvre complet', '18 200 000'], ['Menuiseries & vitrage', '4 100 000'], ['Piscine & aménagements', '2 200 000']] },
+    { id: 'maison', cat: 'residentiel', img: 'assets/sim-villa.jpg', t: 'Maison individuelle neuve', loc: 'Bingerville', yr: '2025', s: '180 m²', d: '7 mois', b: '26 500 000', bm: '26,5 M',
+      txt: 'Terrain déjà viabilisé, plan type adapté au climat : débords de toiture larges, ventilation naturelle croisée, store ban sur la terrasse. Livraison avec dossier des ouvrages exécutés.',
+      postes: [['Implantation & fondations', '2 800 000'], ['Élévation & charpente', '9 600 000'], ['Électricité & plomberie', '4 300 000'], ['Carrelage, peinture, faux plafonds', '6 900 000'], ['Clôture & dallage', '2 900 000']] },
+    { id: 'tertiaire', cat: 'tertiaire', img: 'assets/sim-tertiaire.jpg', t: 'Aménagement d\'un accueil', loc: 'Plateau', yr: '2025', s: '140 m²', d: '3 mois', b: '12 400 000', bm: '12,4 M',
+      txt: 'Réception, salle d\'attente et bureaux pour une structure de services. Faux plafonds techniques, éclairage sur mesure, banque d\'accueil en bois massif, mise en conformité électrique complète.',
+      postes: [['Dépose & mise à nu', '1 300 000'], ['Cloisons & faux plafonds', '3 600 000'], ['Électricité & éclairage', '2 900 000'], ['Menuiserie & banque d\'accueil', '3 100 000'], ['Peinture & signalétique', '1 500 000']] },
+    { id: 'renov', cat: 'renovation', img: 'assets/sim-renovation.jpg', t: 'Rénovation d\'un espace de réception', loc: 'Marcory', yr: '2024', s: '210 m²', d: '4 mois', b: '15 800 000', bm: '15,8 M',
+      txt: 'Établissement ouvert devant rester en exploitation : travaux menés en deux tranches, de nuit et le week-end, avec poussière et bruit maîtrisés. Réseaux repris, sol conservé et restauré.',
+      postes: [['Diagnostic & sondages', '600 000'], ['Réseaux (élec., plomberie, CVC)', '5 400 000'], ['Revêtements & éclairage', '4 700 000'], ['Mobilier fixe & comptoir', '3 300 000'], ['Remise en état & finitions', '1 800 000']] },
+    { id: 'vr', cat: 'vr', img: 'assets/sim-terrain.jpg', t: 'Viabilisation & implantation', loc: 'PK 24, Singrobo', yr: '2026', s: '650 m²', d: '6 semaines', b: '7 900 000', bm: '7,9 M',
+      txt: 'Terrain en zone rurale à préparer avant construction : décapage, plateforme compactée, mur de clôture, regard et évacuation des eaux pluviales, implantation materialisée par repères.',
+      postes: [['Décapage & terrassement', '1 900 000'], ['Mur de clôture & portail', '3 200 000'], ['Assainissement & regards', '1 400 000'], ['Plateforme & compactage', '900 000'], ['Implantation & repères', '500 000']] }
+  ];
+
+  var PRICE = {
+    neuf: [320000, 480000, 700000],
+    renovation: [180000, 260000, 380000],
+    tertiaire: [250000, 380000, 520000],
+    vr: [120000, 180000, 250000]
+  };
+  var LABEL = { neuf: 'Construction neuve', renovation: 'Rénovation', tertiaire: 'Tertiaire', vr: 'VRD & extérieurs' };
+  var GAMME = ['Essentielle', 'Confort', 'Haut de gamme'];
+  /* m² traités par semaine — rythme de chantier observé, par type et par niveau de finition */
+  var RATE = { neuf: [9, 7, 5.5], renovation: [14, 11, 8], tertiaire: [12, 9, 7], vr: [22, 17, 13] };
+
+  /* ---------- utils ---------- */
+  function fc(n) { return new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(Math.round(n)).replace(/\u202f|\u00a0/g, ' ') + ' FCFA'; }
+  var toastT;
+  function toast(msg) {
+    var t = $('#toast'); t.textContent = msg; t.classList.add('show');
+    clearTimeout(toastT); toastT = setTimeout(function () { t.classList.remove('show'); }, 2400);
+  }
+  function copy(text, btn, okMsg) {
+    var done = function (ok) {
+      if (btn) { btn.classList.toggle('ok', ok); var o = btn.textContent; btn.textContent = ok ? 'Copié' : 'Erreur'; setTimeout(function () { btn.textContent = o; btn.classList.remove('ok'); }, 1500); }
+      toast(ok ? (okMsg || 'Copié.') : 'Copie impossible : sélectionnez le texte.');
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); }); }
+    else {
+      var ta = document.createElement('textarea'); ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      var ok = false; try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+      document.body.removeChild(ta); done(ok);
+    }
+  }
+
+  /* ---------- header, progression, scroll-spy ---------- */
+  var hdr = $('#hdr'), prog = $('#prog'), links = $$('#nav a');
+  function onScroll() {
+    var y = window.pageYOffset || document.documentElement.scrollTop;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    hdr.classList.toggle('small', y > 40);
+    prog.style.width = (h > 0 ? Math.min(100, (y / h) * 100) : 0) + '%';
+    var cur = '';
+    $$('main section[id]').forEach(function (s) { if (s.getBoundingClientRect().top <= 140) cur = s.id; });
+    links.forEach(function (a) { a.classList.toggle('on', a.getAttribute('href') === '#' + cur); });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  $('#toTop').addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+  /* ---------- menu mobile ---------- */
+  var burger = $('#burger'), mnav = $('#mnav');
+  burger.addEventListener('click', function () {
+    var open = mnav.style.display === 'block';
+    mnav.style.display = open ? 'none' : 'block';
+    burger.classList.toggle('open', !open);
+    burger.setAttribute('aria-expanded', String(!open));
+  });
+  $$('#mnav a').forEach(function (a) {
+    a.addEventListener('click', function () { mnav.style.display = 'none'; burger.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); });
+  });
+
+  /* ---------- reveal ---------- */
+  var io = ('IntersectionObserver' in window) ? new IntersectionObserver(function (en) {
+    en.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.14, rootMargin: '0px 0px -40px 0px' }) : null;
+  function observe() {
+    $$('.rv').forEach(function (el, i) {
+      if (io) { el.style.transitionDelay = ((i % 4) * 70) + 'ms'; io.observe(el); }
+      else { el.classList.add('in'); }
+    });
+  }
+
+  /* ---------- réalisations ---------- */
+  var real = $('#real');
+  REA.forEach(function (r) {
+    var b = document.createElement('button');
+    b.className = 'card rv'; b.type = 'button'; b.dataset.cat = r.cat; b.dataset.id = r.id;
+    b.innerHTML = '<span class="ph"><img src="' + r.img + '" alt="' + r.t + ' — ' + r.loc + '" loading="lazy">' +
+      '<span class="cat">' + catLabel(r.cat) + '</span><span class="yr">' + r.yr + '</span><span class="more">+</span></span>' +
+      '<span class="cb"><b style="font-size:17.5px;letter-spacing:-.02em">' + r.t + '</b>' +
+      '<span class="loc">' + r.loc + ' · exemple de présentation</span>' +
+      '<span class="kv"><span>Surface<b>' + r.s + '</b></span><span>Durée<b>' + r.d + '</b></span><span>Budget<b>' + r.bm + '</b></span></span></span>';
+    b.addEventListener('click', function () { openModal(r); });
+    real.appendChild(b);
+  });
+  function catLabel(c) { return { residentiel: 'Résidentiel', tertiaire: 'Tertiaire', renovation: 'Rénovation', vr: 'Viabilisation' }[c] || c; }
+
+  $$('#chips .chip').forEach(function (c) {
+    c.addEventListener('click', function () {
+      $$('#chips .chip').forEach(function (x) { x.classList.remove('on'); });
+      c.classList.add('on');
+      var f = c.dataset.f, shown = 0;
+      $$('#real .card').forEach(function (card) {
+        var ok = f === 'all' || card.dataset.cat === f;
+        card.classList.toggle('hidden', !ok); if (ok) shown++;
+      });
+      var e = $('#real .empty');
+      if (!shown && !e) { var d = document.createElement('p'); d.className = 'empty'; d.textContent = 'Aucune fiche dans cette catégorie.'; real.appendChild(d); }
+      if (e && shown) e.remove();
+    });
+  });
+
+  /* ---------- modal ---------- */
+  var modal = $('#modal'), mbox = $('#modal .box'), lastFocus = null;
+  function openModal(r) {
+    lastFocus = document.activeElement;
+    mbox.innerHTML = '<button class="close" type="button" aria-label="Fermer">✕</button>' +
+      '<img src="' + r.img + '" alt="' + r.t + '">' +
+      '<div class="in"><span class="tagx">Fiche de présentation — exemple de contenu</span>' +
+      '<h3>' + r.t + '</h3><p class="sub">' + r.loc + ' · ' + r.s + ' · livré en ' + r.d + ' · ' + r.yr + '</p>' +
+      '<p style="font-size:14.5px;color:#46545c;margin:0 0 20px">' + r.txt + '</p>' +
+      '<table><tbody>' + r.postes.map(function (p) { return '<tr><td>' + p[0] + '</td><td>' + p[1] + ' FCFA</td></tr>'; }).join('') +
+      '<tr><td style="font-weight:700;border-bottom:0">Total indicatif</td><td style="font-weight:700;border-bottom:0">' + r.b + ' FCFA</td></tr></tbody></table>' +
+      '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:24px"><a class="btn amber" href="#contact" data-close>Un projet similaire</a>' +
+      '<button class="btn ghost" type="button" data-close>Fermer</button></div></div>';
+    modal.classList.add('on');
+    document.body.style.overflow = 'hidden';
+    $$('[data-close]', mbox).forEach(function (x) { x.addEventListener('click', closeModal); });
+    $('.close', mbox).addEventListener('click', closeModal);
+    $('.close', mbox).focus();
+  }
+  function closeModal() { modal.classList.remove('on'); document.body.style.overflow = ''; if (lastFocus) lastFocus.focus(); }
+  $('.veil', modal).addEventListener('click', closeModal);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modal.classList.contains('on')) closeModal(); });
+
+  /* ---------- estimateur ---------- */
+  var surf = $('#surf'), surfLbl = $('#surfLbl');
+  function currentType() { var i = $$('input[name=t]').filter(function (x) { return x.checked; })[0]; return i ? i.value : 'neuf'; }
+  function currentGamme() { var i = $$('input[name=g]').filter(function (x) { return x.checked; })[0]; return i ? parseInt(i.value, 10) : 1; }
+  function compute() {
+    var t = currentType(), g = currentGamme(), m2 = parseInt(surf.value, 10);
+    var unit = PRICE[t][g];
+    var base = unit * m2;
+    var opts = $$('input[name=opts]').filter(function (x) { return x.checked; });
+    var rate = opts.reduce(function (a, o) { return a + parseFloat(o.value); }, 0);
+    var total = base * (1 + rate);
+    surfLbl.textContent = m2 + ' m²';
+    $('#amount').innerHTML = fc(total * 0.92) + ' – ' + fc(total * 1.08) +
+      '<small>' + LABEL[t] + ' · niveau ' + GAMME[g].toLowerCase() + '</small>';
+    $('#rUnit').textContent = fc(unit) + ' / m²';
+    $('#rBase').textContent = m2 + ' m² × ' + fc(unit) + ' = ' + fc(base);
+    $('#rOpts').textContent = opts.length ? opts.map(function (o) { return o.dataset.l; }).join(' · ') : 'Aucune';
+    var weeks = Math.max(3, Math.round(m2 / RATE[t][g]));
+    $('#rDur').textContent = '≈ ' + weeks + ' semaines' + (t === 'vr' ? ' (hors intempéries)' : '');
+    return { t: t, g: g, m2: m2, low: total * 0.92, high: total * 1.08, opts: opts.length };
+  }
+  ['input', 'change'].forEach(function (ev) {
+    $('#devis').addEventListener(ev, function (e) { if (e.target.matches('input')) compute(); });
+  });
+  $('#calcReset').addEventListener('click', function () {
+    $('#t-neuf').checked = true; $('#g2').checked = true; surf.value = 150;
+    $$('input[name=opts]').forEach(function (o) { o.checked = false; });
+    compute(); toast('Estimation réinitialisée.');
+  });
+  $('#toForm').addEventListener('click', function () {
+    var c = compute();
+    var map = { neuf: 'Construction neuve', renovation: 'Rénovation / réhabilitation', tertiaire: 'Local commercial / tertiaire', vr: 'VRD, clôture, extérieurs' };
+    var sel = $('#type');
+    $$('option', sel).forEach(function (o) { if (o.textContent === map[c.t]) sel.value = o.value; });
+    $('#surface').value = c.m2;
+    $('#msg').value = 'Projet : ' + LABEL[c.t] + ' (' + GAMME[c.g].toLowerCase() + ') — ' + c.m2 + ' m². ' +
+      'Fourchette obtenue sur le site : ' + fc(c.low) + ' à ' + fc(c.high) + (c.opts ? ', options incluses.' : ', sans option.') +
+      '\nMerci de me proposer une visite de terrain.';
+    $('#contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setTimeout(function () { $('#nom').focus(); }, 700);
+    toast('Estimation reportée dans le formulaire.');
+  });
+  compute();
+
+  /* ---------- FAQ ---------- */
+  $$('#faqlist .qa').forEach(function (qa) {
+    var btn = $('button', qa), ans = $('.ans', qa);
+    btn.addEventListener('click', function () {
+      var open = qa.classList.contains('open');
+      $$('#faqlist .qa.open').forEach(function (o) { o.classList.remove('open'); $('.ans', o).style.maxHeight = '0'; });
+      if (!open) { qa.classList.add('open'); ans.style.maxHeight = ans.scrollHeight + 'px'; }
+    });
+  });
+
+  /* ---------- formulaire ---------- */
+  var f = $('#f'), okBox = $('#ok');
+  var PHONE_RE = /^(\+?225[\s.-]?)?(\d[\s.-]?){8,10}$/;
+  function bad(el, on) { el.closest('.field').classList.toggle('bad', on); return !on; }
+  function validate() {
+    var v = true;
+    v = bad($('#nom'), $('#nom').value.trim().length < 2) && v;
+    v = bad($('#tel'), !PHONE_RE.test($('#tel').value.trim())) && v;
+    v = bad($('#commune'), !$('#commune').value) && v;
+    v = bad($('#type'), !$('#type').value) && v;
+    var mv = $('#mail').value.trim();
+    v = bad($('#mail'), !!mv && !/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(mv)) && v;
+    return v;
+  }
+  function draft() {
+    var lines = [
+      'Projet de travaux — demande de devis', '',
+      'Nom : ' + ($('#nom').value.trim() || '—'),
+      'Téléphone : ' + $('#tel').value.trim(),
+      'E-mail : ' + ($('#mail').value.trim() || '—'),
+      'Commune : ' + $('#commune').value,
+      'Nature : ' + $('#type').value,
+      'Surface : ' + ($('#surface').value.trim() ? $('#surface').value.trim() + ' m²' : 'à préciser'),
+      '', $('#msg').value.trim() || '(aucun détail ajouté)',
+      '', 'Envoyé depuis la maquette du site SIM Construction & Architecture.'
+    ];
+    return lines.join('\n');
+  }
+  function waHref() { return 'https://wa.me/2250707937317?text=' + encodeURIComponent($('#msg').value.trim() || 'Bonjour, je souhaite un devis pour un projet de construction à Abidjan.'); }
+  $('#wa').href = waHref();
+  ['input', 'change'].forEach(function (ev) { f.addEventListener(ev, function () { $('#wa').href = waHref(); }); });
+
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!validate()) { toast('Quelques champs sont à corriger.'); var first = $('.field.bad input, .field.bad select'); if (first) first.focus(); return; }
+    var body = draft();
+    $('#okTxt').textContent = 'Le message est prêt : ' + $('#type').value + ' de ' + ($('#surface').value.trim() || 'surface à préciser') + ' à ' + $('#commune').value + '. Ouvrez-le dans votre messagerie, ou envoyez-le sur WhatsApp.';
+    $('#okMail').href = 'mailto:simconstruction225@gmail.com?subject=' + encodeURIComponent('Demande de devis — ' + $('#type').value + ' à ' + $('#commune').value) + '&body=' + encodeURIComponent(body);
+    $('#okWa').href = waHref();
+    okBox.classList.add('show');
+    f.style.display = 'none';
+    okBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    toast('Vérifié. Plus qu\'un clic pour envoyer.');
+  });
+
+  $('#again').addEventListener('click', function () {
+    okBox.classList.remove('show');
+    f.style.display = '';
+    $('#nom').focus();
+  });
+
+  /* ---------- copie des coordonnées ---------- */  $$('.copy').forEach(function (b) {
+    b.addEventListener('click', function () { copy(b.dataset.copy, b, 'Numéro copié : ' + b.dataset.copy); });
+  });
+
+  /* ---------- compteurs hero ---------- */
+  if ('IntersectionObserver' in window) {
+    var cio = new IntersectionObserver(function (en) {
+      en.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        $$('.facts div b').forEach(function (b) {
+          var raw = b.textContent, n = parseInt(raw.replace(/\D/g, ''), 10);
+          if (!n) return;
+          var suffix = raw.replace(/[0-9]/g, '').trim(), i = 0;
+          var step = Math.max(1, Math.round(n / 22));
+          var t = setInterval(function () {
+            i += step; if (i >= n) { i = n; clearInterval(t); }
+            b.textContent = suffix.indexOf('h') > -1 ? i + ' h' : i;
+          }, 34);
+        });
+        cio.disconnect();
+      });
+    }, { threshold: 0.4 });
+    var fa = $('.facts'); if (fa) cio.observe(fa);
+  }
+
+  /* ---------- rail méthode ---------- */
+  var steps = $('#steps');
+  if (steps && 'IntersectionObserver' in window) {
+    var sio = new IntersectionObserver(function (en) {
+      en.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var all = $$('.step', steps), done = all.filter(function (s) { return s.classList.contains('in'); }).length;
+        steps.style.setProperty('--fill', Math.round((done / all.length) * 100) + '%');
+      });
+    }, { threshold: 0.5 });
+    $$('.step', steps).forEach(function (s) { sio.observe(s); });
+  }
+
+  observe();
+})();
+</script>
+</body>
+</html>

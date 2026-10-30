@@ -39,7 +39,9 @@
   footer a{color:var(--ink);border-bottom:1px solid var(--line)}
   .banner{background:#101b16;color:#dfe6df;font-size:11px;letter-spacing:.04em;text-align:center;padding:9px 16px}
   .banner b{color:#e8b56b}
-  @media(max-width:860px){.hero{grid-template-columns:1fr;gap:26px;padding-top:34px}.grid{grid-template-columns:1fr}.thumb .name{font-size:22px}}
+  .card.wide{grid-column:1/-1;flex-direction:row}
+  .card.wide .thumb{width:46%;flex:none;aspect-ratio:16/10}
+  @media(max-width:860px){.hero{grid-template-columns:1fr;gap:26px;padding-top:34px}.grid{grid-template-columns:1fr}.thumb .name{font-size:22px}.card.wide{flex-direction:column}.card.wide .thumb{width:100%}}
 </style>
 </head>
 <body>
@@ -47,14 +49,14 @@
 <div class="wrap">
   <header>
     <div class="brand">Studio <span>·</span> démos Abidjan</div>
-    <span style="font-size:13px;color:var(--muted)">Maquettes non officielles · octobre 2026</span>
+    <a class="headlink" href="../rapport-prospection-abidjan.html">← Rapport de prospection</a>
   </header>
 
   <section class="hero">
     <div>
-      <div class="kicker">Quatre métiers, quatre preuves</div>
+      <div class="kicker">Cinq métiers, cinq preuves</div>
       <h1>Montrer le site<br><em>avant</em> d’en parler.</h1>
-      <p class="lead">Ces quatre maquettes reprennent les vraies coordonnées et les vraies notes Google d’entreprises d’Abidjan sans site vitrine. Objectif : rendre le bénéfice visible en dix secondes, sur mobile.</p>
+      <p class="lead">Ces maquettes reprennent les vraies coordonnées et les vraies notes Google d’entreprises d’Abidjan sans site vitrine. Objectif : rendre le bénéfice visible en dix secondes, sur mobile.</p>
     </div>
     <div class="hero-note">
       Chaque démo est autonome : navigation, réservation, filtres et formulaires fonctionnent.<br><br>
@@ -91,11 +93,18 @@
         <div class="meta"><span>Cocody · 4,0 ★ · 8 avis</span><span class="arrow">→</span></div>
       </div>
     </a>
+    <a class="card wide" href="sim-construction.html">
+      <div class="thumb"><span class="tag">BTP &amp; construction</span><img src="assets/sim-hero.jpg" alt="Villa contemporaine achevée à Abidjan"><span class="name">SIM Construction</span></div>
+      <div class="body">
+        <p>La maquette la plus complète : six métiers détaillés, réalisations filtrables avec fiche poste par poste, méthode en cinq étapes, <b>estimateur de budget au m²</b>, engagements vérifiables, zone d’intervention, FAQ et formulaire de devis validé. Un site vitrine BTP qui répond aux questions qu’un maître d’ouvrage se pose avant d’appeler.</p>
+        <div class="meta"><span>Cocody Djorogobité · 3,0 ★ · 1 avis · site hors ligne</span><span class="arrow">→</span></div>
+      </div>
+    </a>
   </section>
 
   <footer>
     <div>Démos HTML autonomes · Octobre 2026<br>Données publiques GoAfricaOnline &amp; Google Maps</div>
-    <div><a href="restaurant.html">Restaurant</a> · <a href="immobilier.html">Immobilier</a> · <a href="sante.html">Santé</a> · <a href="beaute.html">Beauté</a></div>
+    <div><a href="../rapport-prospection-abidjan.html">Rapport d’analyse</a> · <a href="restaurant.html">Restaurant</a> · <a href="immobilier.html">Immobilier</a> · <a href="sante.html">Santé</a> · <a href="beaute.html">Beauté</a> · <a href="sim-construction.html">BTP</a></div>
   </footer>
 </div>
 </body>
